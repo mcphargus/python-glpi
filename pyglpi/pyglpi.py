@@ -514,6 +514,7 @@ class GLPI:
 
 if __name__ == '__main__':
     username = raw_input("Enter your GLPI username: ")
-    password = raw_input("Enter your password: ")    
+    password = raw_input("Enter your password: ")
+    host = raw_input("Enter your hostname: ")
     glpi = GLPI()
-    glpi.connect('glpi.drivefactor.com',username,password)    
+    glpi.connect(host,username,password)    
