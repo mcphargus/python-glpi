@@ -195,46 +195,157 @@ class GLPI:
         response = urllib2.urlopen(self.__request__(params))
         return json.loads(response.read())
 
-    def get_computer_infocoms(self):
+    def get_computer_infocoms(self,computer_id,id2name=None,_help=None):
         """
         Return a JSON serialized list of computer infocoms from the
-        GLPI server.        
-        """
-        pass
+        GLPI server.
 
-    def get_computer_contracts(self):
+        @type computer_id: integer
+        @param computer_id: ID of the computer
+        @type id2name: boolean
+        @param id2name: associate labels with IDs and return with the rest of the JSON result
+        @type _help: boolean
+        @param _help: return JSON serialized information about this API call
+        """
+        params = {'method':'glpi.getComputerInfoComs',
+                  'session':self.session,
+                  'id':computer_id}
+        if id2name: params['id2name'] = id2name
+        if _help: params['help'] = _help
+
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())
+
+    def get_computer_contracts(self,computer_id,id2name=None,_help=None):
         """
         Return a JSON serialized list of computer contracts from the
         GLPI server.
-        """
-        pass
 
-    def get_networking_equipment(self):
+        @type computer_id: integer
+        @param computer_id: ID of the computer
+        @type id2name: boolean
+        @param id2name: associate labels with IDs and return with the rest of the JSON result
+        @type _help: boolean
+        @param _help: return JSON serialized information about this API call
         """
-        Return a JSON serialized list of networking gear from the GLPI
+
+        params = {'method':'glpi.getComputerContracts',
+                  'session':self.session}
+        if id2name: params['id2name'] = id2name
+        if _help: params['help'] = _help
+
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())
+
+    def get_network_equipment(self,network_equipment_id,id2name=None,infocoms=None,
+                              contracts=None,networkports=None,_help=None):
+        """
+        Return a JSON serialized network object from the GLPI
         server.
-        """
-        pass
 
-    def get_infocoms(self):
+        @type network_equipment_id: integer
+        @param network_equipment_id: ID of the network equipment
+        @type id2name: boolean
+        @param id2name: associate labels with IDs and return with the rest of the JSON result
+        @type infocoms: boolean
+        @param infocoms: return infocoms associated with the network equipment
+        @type contracts: boolean
+        @param contracts: return contracts associated with the network equipment
+        @type networkports: boolean
+        @param networkports: return information about the equipments network ports
+        @type _help: boolean
+        @param _help: return JSON serialized information about this API call
         """
-        Return a JSON serialized list of infocoms from the GLPI
-        server.
-        """
-        pass
+        params = {'method':'glpi.getNetworkEquipment',
+                  'session':self.session,
+                  'id':network_equipment_id}
+        
+        if id2name: params['id2name'] = id2name
+        if infocoms: params['infocoms'] = infocoms
+        if contracts: params['contracts'] = contracts
+        if networkports: params['networkports'] = networkports
+        if _help: params['help'] = _help
 
-    def get_contracts(self):
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())
+
+    def get_infocoms(self,_id,itemtype,id2name=None,_help=None):
+        """
+        Return a JSON serialized list of computer's financial
+        information from the GLPI server.
+
+        @type _id: integer
+        @param _id: object id
+
+        @type itemtype: integer
+        @param itemtype: the object type
+
+        @type id2name: boolean
+        @param id2name: option to enable id to name translation of dropdown fields
+
+        @type _help: boolean
+        @param _help: Get help from the server
+        """
+        params = {'method':'glpi.getInfoComs',
+                  'session':self.session,
+                  'id':infocoms_id,
+                  'itemtype':itemtype}
+        if id2name: params['id2name'] = id2name
+        if _help: params['help'] = _help
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())
+
+    def get_contracts(self,_id,id2name=None,_help=None):
         """
         Return a JSON serialized list of contracts from the GLPI server.
-        """
-        pass
 
-    def get_network_ports(self):
+        @type _id: integer
+        @param _id: computer id
+        @type id2name: boolean
+        @param id2name: option to enable id to name translation of dropdown fields
+        @type _help: boolean
+        @param _help: get help from server
+        """
+        params = {'method':'glpi.getContracts',
+                  'session':self.session,
+                  'id':_id}
+        if id2name: params['id2name'] = id2name
+        if _help: params['help'] = _help
+
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())
+
+    def get_network_ports(self,_id,itemtype,id2name=None,_help=None):
         """
         Return a JSON serialized list of network ports from the GLPI
         server.
+
+        @type _id: integer
+        @param _id: object ID
+        @type itemtype: string
+        @param itemtype: values can be:
+          - Computer
+          - Peripheral
+          - NetworkEquipment
+          - Phone
+          - Printer
+        @type id2name: boolean
+        @param id2name: option to enable id to name translation of dropdown fields
+        @type _help: boolean
+        @param _help: get help from server about this api call
         """
-        pass
+
+        params = {'method':'glpi.getNetworkPorts',
+                  'session':self.session,
+                  'id':_id,
+                  'itemtype':itemtype}
+
+        if id2name: params['id2name'] = id2name
+        if _help: params['help'] = _help
+        
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())
+        
 
     def list_computers(self):
         """

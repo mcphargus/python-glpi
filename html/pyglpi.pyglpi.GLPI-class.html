@@ -285,7 +285,10 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_computer_infocoms"></a><span class="summary-sig-name">get_computer_infocoms</span>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#get_computer_infocoms" class="summary-sig-name">get_computer_infocoms</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">computer_id</span>,
+        <span class="summary-sig-arg">id2name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
       Return a JSON serialized list of computer infocoms from the GLPI 
       server.</td>
           <td align="right" valign="top">
@@ -303,7 +306,10 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_computer_contracts"></a><span class="summary-sig-name">get_computer_contracts</span>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#get_computer_contracts" class="summary-sig-name">get_computer_contracts</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">computer_id</span>,
+        <span class="summary-sig-arg">id2name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
       Return a JSON serialized list of computer contracts from the GLPI 
       server.</td>
           <td align="right" valign="top">
@@ -321,11 +327,16 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_networking_equipment"></a><span class="summary-sig-name">get_networking_equipment</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      Return a JSON serialized list of networking gear from the GLPI 
-      server.</td>
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#get_network_equipment" class="summary-sig-name">get_network_equipment</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">network_equipment_id</span>,
+        <span class="summary-sig-arg">id2name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">infocoms</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">contracts</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">networkports</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Return a JSON serialized network object from the GLPI server.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.get_networking_equipment">source&nbsp;code</a></span>
+            <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.get_network_equipment">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -339,8 +350,13 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_infocoms"></a><span class="summary-sig-name">get_infocoms</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      Return a JSON serialized list of infocoms from the GLPI server.</td>
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#get_infocoms" class="summary-sig-name">get_infocoms</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">_id</span>,
+        <span class="summary-sig-arg">itemtype</span>,
+        <span class="summary-sig-arg">id2name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Return a JSON serialized list of computer's financial information 
+      from the GLPI server.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.get_infocoms">source&nbsp;code</a></span>
             
@@ -356,7 +372,10 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_contracts"></a><span class="summary-sig-name">get_contracts</span>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#get_contracts" class="summary-sig-name">get_contracts</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">_id</span>,
+        <span class="summary-sig-arg">id2name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
       Return a JSON serialized list of contracts from the GLPI server.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.get_contracts">source&nbsp;code</a></span>
@@ -373,7 +392,11 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_network_ports"></a><span class="summary-sig-name">get_network_ports</span>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#get_network_ports" class="summary-sig-name">get_network_ports</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">_id</span>,
+        <span class="summary-sig-arg">itemtype</span>,
+        <span class="summary-sig-arg">id2name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
       Return a JSON serialized list of network ports from the GLPI server.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.get_network_ports">source&nbsp;code</a></span>
@@ -865,6 +888,208 @@
   </dl>
 </td></tr></table>
 </div>
+<a name="get_computer_infocoms"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_computer_infocoms</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">computer_id</span>,
+        <span class="sig-arg">id2name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.get_computer_infocoms">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a JSON serialized list of computer infocoms from the GLPI 
+  server.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>computer_id</code></strong> (integer) - ID of the computer</li>
+        <li><strong class="pname"><code>id2name</code></strong> (boolean) - associate labels with IDs and return with the rest of the JSON 
+          result</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - return JSON serialized information about this API call</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_computer_contracts"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_computer_contracts</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">computer_id</span>,
+        <span class="sig-arg">id2name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.get_computer_contracts">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a JSON serialized list of computer contracts from the GLPI 
+  server.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>computer_id</code></strong> (integer) - ID of the computer</li>
+        <li><strong class="pname"><code>id2name</code></strong> (boolean) - associate labels with IDs and return with the rest of the JSON 
+          result</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - return JSON serialized information about this API call</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_network_equipment"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_network_equipment</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">network_equipment_id</span>,
+        <span class="sig-arg">id2name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">infocoms</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">contracts</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">networkports</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.get_network_equipment">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a JSON serialized network object from the GLPI server.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>network_equipment_id</code></strong> (integer) - ID of the network equipment</li>
+        <li><strong class="pname"><code>id2name</code></strong> (boolean) - associate labels with IDs and return with the rest of the JSON 
+          result</li>
+        <li><strong class="pname"><code>infocoms</code></strong> (boolean) - return infocoms associated with the network equipment</li>
+        <li><strong class="pname"><code>contracts</code></strong> (boolean) - return contracts associated with the network equipment</li>
+        <li><strong class="pname"><code>networkports</code></strong> (boolean) - return information about the equipments network ports</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - return JSON serialized information about this API call</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_infocoms"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_infocoms</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">_id</span>,
+        <span class="sig-arg">itemtype</span>,
+        <span class="sig-arg">id2name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.get_infocoms">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a JSON serialized list of computer's financial information from
+  the GLPI server.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>_id</code></strong> (integer) - object id</li>
+        <li><strong class="pname"><code>itemtype</code></strong> (integer) - the object type</li>
+        <li><strong class="pname"><code>id2name</code></strong> (boolean) - option to enable id to name translation of dropdown fields</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - Get help from the server</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_contracts"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_contracts</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">_id</span>,
+        <span class="sig-arg">id2name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.get_contracts">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a JSON serialized list of contracts from the GLPI server.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>_id</code></strong> (integer) - computer id</li>
+        <li><strong class="pname"><code>id2name</code></strong> (boolean) - option to enable id to name translation of dropdown fields</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get help from server</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_network_ports"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_network_ports</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">_id</span>,
+        <span class="sig-arg">itemtype</span>,
+        <span class="sig-arg">id2name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.get_network_ports">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a JSON serialized list of network ports from the GLPI 
+  server.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>_id</code></strong> (integer) - object ID</li>
+        <li><strong class="pname"><code>itemtype</code></strong> (string) - values can be:
+          <ul>
+            <li>
+              Computer
+            </li>
+            <li>
+              Peripheral
+            </li>
+            <li>
+              NetworkEquipment
+            </li>
+            <li>
+              Phone
+            </li>
+            <li>
+              Printer
+            </li>
+          </ul></li>
+        <li><strong class="pname"><code>id2name</code></strong> (boolean) - option to enable id to name translation of dropdown fields</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get help from server about this api call</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
 <a name="create_ticket"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -951,7 +1176,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Oct  5 16:22:00 2012
+    Generated by Epydoc 3.0.1 on Fri Oct  5 17:03:56 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

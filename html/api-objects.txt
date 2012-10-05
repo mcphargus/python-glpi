@@ -13,15 +13,15 @@ pyglpi.pyglpi.GLPI.update_objects	pyglpi.pyglpi.GLPI-class.html#update_objects
 pyglpi.pyglpi.GLPI.list_my_entities	pyglpi.pyglpi.GLPI-class.html#list_my_entities
 pyglpi.pyglpi.GLPI.__init__	pyglpi.pyglpi.GLPI-class.html#__init__
 pyglpi.pyglpi.GLPI.get_ticket	pyglpi.pyglpi.GLPI-class.html#get_ticket
-pyglpi.pyglpi.GLPI.create_objects	pyglpi.pyglpi.GLPI-class.html#create_objects
+pyglpi.pyglpi.GLPI.get_network_equipment	pyglpi.pyglpi.GLPI-class.html#get_network_equipment
 pyglpi.pyglpi.GLPI.delete_objects	pyglpi.pyglpi.GLPI-class.html#delete_objects
 pyglpi.pyglpi.GLPI.get_contracts	pyglpi.pyglpi.GLPI-class.html#get_contracts
 pyglpi.pyglpi.GLPI.list_dropdown_menus	pyglpi.pyglpi.GLPI-class.html#list_dropdown_menus
 pyglpi.pyglpi.GLPI.list_inventory_objects	pyglpi.pyglpi.GLPI-class.html#list_inventory_objects
-pyglpi.pyglpi.GLPI.get_networking_equipment	pyglpi.pyglpi.GLPI-class.html#get_networking_equipment
 pyglpi.pyglpi.GLPI.set_ticket_validation	pyglpi.pyglpi.GLPI-class.html#set_ticket_validation
 pyglpi.pyglpi.GLPI.get_network_ports	pyglpi.pyglpi.GLPI-class.html#get_network_ports
 pyglpi.pyglpi.GLPI.list_computers	pyglpi.pyglpi.GLPI-class.html#list_computers
+pyglpi.pyglpi.GLPI.create_objects	pyglpi.pyglpi.GLPI-class.html#create_objects
 pyglpi.pyglpi.GLPI.list_groups	pyglpi.pyglpi.GLPI-class.html#list_groups
 pyglpi.pyglpi.GLPI.add_ticket_observer	pyglpi.pyglpi.GLPI-class.html#add_ticket_observer
 pyglpi.pyglpi.GLPI.create_ticket	pyglpi.pyglpi.GLPI-class.html#create_ticket
