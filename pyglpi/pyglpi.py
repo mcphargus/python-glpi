@@ -1,11 +1,17 @@
 #!/usr/bin/env python
 
+"""
+@author: Clint Grimsley
+@license: GPLv2 U{http://www.gnu.org/licenses/gpl-2.0.html}
+
+"""
+
+
+
 import urllib, urllib2
 import json
 import gzip
 import pprint
-from gzip import GzipFile
-from StringIO import StringIO
 import sys
 
 class GLPI:
