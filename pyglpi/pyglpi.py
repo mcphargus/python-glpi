@@ -62,8 +62,11 @@ class GLPI:
                   'method':'glpi.doLogin'}
         request = urllib2.Request(self.url + urllib.urlencode(params))
         response = urllib2.urlopen(request).read()
-        session_id = json.loads(response)['session']
-        self.session = session_id
+        try:
+            session_id = json.loads(response)['session']       
+            self.session = session_id
+        except:
+            raise Exception("Login incorrect or server down")
 
     def get_server_status(self):
         """
@@ -335,7 +338,7 @@ class GLPI:
         @param _help: get help from server about this api call
         """
 
-        params = {'method':'glpi.getNetworkPorts',
+        params = {'method':'glpi.getNetworkports',
                   'session':self.session,
                   'id':_id,
                   'itemtype':itemtype}
@@ -518,3 +521,4 @@ if __name__ == '__main__':
     host = raw_input("Enter your hostname: ")
     glpi = GLPI()
     glpi.connect(host,username,password)    
+    pprint.pprint(glpi.get_network_ports(5,"NetworkEquipment"))
