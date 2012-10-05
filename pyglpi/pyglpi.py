@@ -32,6 +32,10 @@ class GLPI:
 
     Thanks so much to all the awesome developers that have made the
     webservices plugin and GLPI so useful.
+
+    B{Special Note} If any boolean arguments are defined, they're
+    automatically added to the GET request, which means the
+    webservices API will treat them as being true. You've been warned.
     """
     
     def __init__(self):        
@@ -350,19 +354,63 @@ class GLPI:
         return json.loads(response.read())
         
 
-    def list_computers(self):
+    def list_computers(self,count=None,_help=None):
         """
         Return a JSON serialized list of computers from the GLPI
-        server.        
-        """
-        pass
+        server.
 
-    def list_dropdown_menus(self):
+        @type count:integer
+        @param count: start, limit
+        @type _help: boolean
+        @param _help: get help from server about this API call
+        """
+        params = {'method':'glpi.listComputers',
+                  'session':self.session}
+        if count: params['count'] = count
+        if _help: params['help'] = _help
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())        
+
+    def list_dropdown_values(self,dropdown,_id=None,parent=None,name=None,
+                             helpdesk=None,criteria=None,count=None,_help=None):
         """
         Return a JSON serialized list of dropdown menus from the GLPI
         server.
+
+        @type dropdown: string
+        @param dropdown: name of the dropdown, must be a GLPI class
+        name or a Special dropdown name. Special dropdowns are:
+          - ticketstatus
+          - ticketurgency
+          - ticketimpact
+          - tickettype
+          - ticketpriority
+          - ticketglobalvalidation
+          - ticketvalidationstatus
+        @type _id: integer
+        @param _id: id of the entry
+        @type name: string
+        @param name: optional string (mysql % joker allowed)
+        @type helpdesk: string
+        @param helpdesk: filter on 'is_helpdeskvisible' attribute
+        (TicketCategory) (deprecated, use criteria=helpdesk intead)
+        @type criteria: string
+        @param criteria: filter on a boolean attribute (is_xxx)
+        @type count: integer
+        @param count: start, limit        
         """
-        pass
+        params = {'method':'glpi.listDropdownValues',
+                  'session':self.session,
+                  'dropdown':dropdown}
+        if _id: params['id'] = _id
+        if parent: params['parent'] = parent
+        if name: params['name'] = name
+        if helpdesk: params['helpdesk'] = helpdesk
+        if criteria: params['criteria'] = criteria
+        if count: params['count'] = count
+        if _help: params['help'] = _help
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())
 
     def list_groups(self):
         """

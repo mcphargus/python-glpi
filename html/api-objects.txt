@@ -16,9 +16,10 @@ pyglpi.pyglpi.GLPI.get_ticket	pyglpi.pyglpi.GLPI-class.html#get_ticket
 pyglpi.pyglpi.GLPI.get_network_equipment	pyglpi.pyglpi.GLPI-class.html#get_network_equipment
 pyglpi.pyglpi.GLPI.delete_objects	pyglpi.pyglpi.GLPI-class.html#delete_objects
 pyglpi.pyglpi.GLPI.get_contracts	pyglpi.pyglpi.GLPI-class.html#get_contracts
-pyglpi.pyglpi.GLPI.list_dropdown_menus	pyglpi.pyglpi.GLPI-class.html#list_dropdown_menus
+pyglpi.pyglpi.GLPI.list_tickets	pyglpi.pyglpi.GLPI-class.html#list_tickets
 pyglpi.pyglpi.GLPI.list_inventory_objects	pyglpi.pyglpi.GLPI-class.html#list_inventory_objects
 pyglpi.pyglpi.GLPI.set_ticket_validation	pyglpi.pyglpi.GLPI-class.html#set_ticket_validation
+pyglpi.pyglpi.GLPI.list_dropdown_values	pyglpi.pyglpi.GLPI-class.html#list_dropdown_values
 pyglpi.pyglpi.GLPI.get_network_ports	pyglpi.pyglpi.GLPI-class.html#get_network_ports
 pyglpi.pyglpi.GLPI.list_computers	pyglpi.pyglpi.GLPI-class.html#list_computers
 pyglpi.pyglpi.GLPI.create_objects	pyglpi.pyglpi.GLPI-class.html#create_objects
@@ -37,4 +38,3 @@ pyglpi.pyglpi.GLPI.add_ticket_document	pyglpi.pyglpi.GLPI-class.html#add_ticket_
 pyglpi.pyglpi.GLPI.add_ticket_followup	pyglpi.pyglpi.GLPI-class.html#add_ticket_followup
 pyglpi.pyglpi.GLPI.get_my_info	pyglpi.pyglpi.GLPI-class.html#get_my_info
 pyglpi.pyglpi.GLPI.list_helpdesk_types	pyglpi.pyglpi.GLPI-class.html#list_helpdesk_types
-pyglpi.pyglpi.GLPI.list_tickets	pyglpi.pyglpi.GLPI-class.html#list_tickets
