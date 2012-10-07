@@ -599,7 +599,17 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="list_users"></a><span class="summary-sig-name">list_users</span>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#list_users" class="summary-sig-name">list_users</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">user</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">group</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">location</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">login</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">entity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">parent</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">order</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">count</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
       Return a JSON serialized list of users from the GLPI server.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_users">source&nbsp;code</a></span>
@@ -651,7 +661,16 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="add_ticket_document"></a><span class="summary-sig-name">add_ticket_document</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#add_ticket_document" class="summary-sig-name">add_ticket_document</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ticket</span>,
+        <span class="summary-sig-arg">url</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">base64</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">comment</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">content</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Add a document to an existing ticket if the authenticated user can 
+      edit it.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.add_ticket_document">source&nbsp;code</a></span>
             
@@ -667,7 +686,16 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="add_ticket_followup"></a><span class="summary-sig-name">add_ticket_followup</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#add_ticket_followup" class="summary-sig-name">add_ticket_followup</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ticket</span>,
+        <span class="summary-sig-arg">content</span>,
+        <span class="summary-sig-arg">source</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">private</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">reopen</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">close</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Add a followup to an existing ticket if the authenticated user can 
+      edit it.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.add_ticket_followup">source&nbsp;code</a></span>
             
@@ -683,7 +711,11 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="add_ticket_observer"></a><span class="summary-sig-name">add_ticket_observer</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#add_ticket_observer" class="summary-sig-name">add_ticket_observer</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ticket</span>,
+        <span class="summary-sig-arg">user</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Add a new observer to an existing ticket.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.add_ticket_observer">source&nbsp;code</a></span>
             
@@ -1555,6 +1587,61 @@
   </dl>
 </td></tr></table>
 </div>
+<a name="list_users"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">list_users</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">user</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">group</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">location</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">login</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">entity</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">parent</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">order</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">count</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_users">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a JSON serialized list of users from the GLPI server.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>user</code></strong> (integer) - ID of user, returns single user</li>
+        <li><strong class="pname"><code>group</code></strong> (integer) - ID of group</li>
+        <li><strong class="pname"><code>location</code></strong> (integer) - ID of location</li>
+        <li><strong class="pname"><code>login</code></strong> (string) - login name (mysql % joker allowed)</li>
+        <li><strong class="pname"><code>name</code></strong> (string) - name (mysql % joker allowed)</li>
+        <li><strong class="pname"><code>entity</code></strong> (integer) - ID of entity</li>
+        <li><strong class="pname"><code>parent</code></strong> (boolean) - search or not for user with recursive right on parent entities 
+          (default: True)</li>
+        <li><strong class="pname"><code>order</code></strong> (list) - order of the result, must be one or more of the following,:
+          <ul>
+            <li>
+              id
+            </li>
+            <li>
+              name
+            </li>
+            <li>
+              login
+            </li>
+          </ul>
+          <p>defaults to 'id'</p></li>
+        <li><strong class="pname"><code>count</code></strong> (list) - interable including start and limit integers</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get usage information</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
 <a name="create_ticket"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -1614,6 +1701,123 @@
   </dl>
 </td></tr></table>
 </div>
+<a name="add_ticket_document"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_ticket_document</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">ticket</span>,
+        <span class="sig-arg">url</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">base64</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">comment</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">content</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.add_ticket_document">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add a document to an existing ticket if the authenticated user can 
+  edit it.</p>
+  <p>Returns a JSON serialized object of the ticket if the call 
+  succeeds.</p>
+  <p><b>Special Note</b> base64 and url are mutually exclusive.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>ticket</code></strong> (integer) - ID of the ticket</li>
+        <li><strong class="pname"><code>url</code></strong> (string) - url of the document to be uploaded</li>
+        <li><strong class="pname"><code>name</code></strong> (string) - name of the document</li>
+        <li><strong class="pname"><code>base64</code></strong> (base64 encoded string) - content of the document in base64 encoded string</li>
+        <li><strong class="pname"><code>comment</code></strong> (string) - depracated, use <b>content</b> instead</li>
+        <li><strong class="pname"><code>content</code></strong> (string) - if present, also add a followup, if the documentation upload 
+          succeeded, for additional options, see <a 
+          href="pyglpi.pyglpi.GLPI-class.html#add_ticket_followup" 
+          class="link">GLPI.add_ticket_followup</a></li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get usage information</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="add_ticket_followup"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_ticket_followup</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">ticket</span>,
+        <span class="sig-arg">content</span>,
+        <span class="sig-arg">source</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">private</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">reopen</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">close</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.add_ticket_followup">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add a followup to an existing ticket if the authenticated user can 
+  edit it.</p>
+  <p>Returns a hashtable of the modified ticket object (See <a 
+  href="pyglpi.pyglpi.GLPI-class.html#get_ticket" 
+  class="link">GLPI.get_ticket</a>).</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>ticket</code></strong> (integer) - ID of the ticket</li>
+        <li><strong class="pname"><code>content</code></strong> (string) - <b>required</b> content of the new followup</li>
+        <li><strong class="pname"><code>source</code></strong> (string) - name of the RequestType (created if needed), defaults to 
+          'WebServices'</li>
+        <li><strong class="pname"><code>private</code></strong> (boolean) - mark followup as private, defaults to 0</li>
+        <li><strong class="pname"><code>reopen</code></strong> (boolean) - set ticket to working state (deny solution for 'solved' ticket or
+          answer for 'waiting' ticket)</li>
+        <li><strong class="pname"><code>close</code></strong> (boolean) - close a 'solved' ticket</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get usage information</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="add_ticket_observer"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_ticket_observer</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">ticket</span>,
+        <span class="sig-arg">user</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.add_ticket_observer">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add a new observer to an existing ticket.</p>
+  <p>Current user can add himself to a ticket he can view.</p>
+  <p>Other users can be added if allowed to update the ticket.</p>
+  <p>Returns a JSON serialized ticket upon success (as in <a 
+  href="pyglpi.pyglpi.GLPI-class.html#get_ticket" 
+  class="link">GLPI.get_ticket</a>)</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>ticket</code></strong> (integer) - ID of the ticket</li>
+        <li><strong class="pname"><code>user</code></strong> (integer) - ID of the user</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
@@ -1641,7 +1845,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Oct  7 15:21:55 2012
+    Generated by Epydoc 3.0.1 on Sun Oct  7 16:04:23 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

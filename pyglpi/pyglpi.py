@@ -680,13 +680,57 @@ class GLPI:
         response = urllib2.urlopen(self.__request__(params))
         return json.loads(response.read())
 
-    def list_users(self):
+    def list_users(self, user=None, group=None, location=None,
+                   login=None, name=None, entity=None, parent=None,
+                   order=None, count=None, _help=None):
+        
         """
         Return a JSON serialized list of users from the GLPI server.
+
+        @type user: integer
+        @type group: integer
+        @type location: integer
+        @type login: string
+        @type name: string
+        @type entity: integer
+        @type parent: boolean
+        @type order: list
+        @type count: list
+        @type _help: boolean
+        @param user: ID of user, returns single user
+        @param group: ID of group
+        @param location: ID of location
+        @param login: login name (mysql % joker allowed)
+        @param name: name (mysql % joker allowed)
+        @param entity: ID of entity
+        @param parent: search or not for user with recursive right on parent entities (default: True)
+        @param order: order of the result, must be one or more of the following,:
+          - id
+          - name
+          - login
+        defaults to 'id'
+        @param count: interable including start and limit integers
+        @param _help: get usage information
         """
 
         params = {'method':'glpi.listUsers',
                   'session':self.session}
+        if user: params['user'] = user
+        if group: params['group'] = group
+        if location: params['location'] = location
+        if login: params['login'] = login
+        if name: params['name'] = name
+        if entity: params['entity'] = entity
+        if parent: params['parent'] = parent
+        if order: params['order'] = order
+        if count:
+            if count.length < 2:
+                raise Exception("List needs to include a start and limit integer")
+            if count.length == 2:
+                params['start'] = count[0]
+                params['limit'] = count[1]
+        if _help: params['help'] = _help
+        
         response = urllib2.urlopen(self.__request__(params))
         return json.loads(response.read())
 
@@ -765,15 +809,114 @@ class GLPI:
         response = urllib2.urlopen(self.__request__(params))
         return json.loads(response.read())
 
-    def add_ticket_document(self):
-        pass
+    def add_ticket_document(self, ticket, url=None, name=None,
+                            base64=None, comment=None, content=None,
+                            _help=None):
+        
+        """
+        Add a document to an existing ticket if the authenticated user can edit it.
 
-    def add_ticket_followup(self):
-        pass
+        Returns a JSON serialized object of the ticket if the call succeeds.
 
-    def add_ticket_observer(self):
-        pass
+        B{Special Note} base64 and url are mutually exclusive.
 
+        @type ticket: integer
+        @type url: string
+        @type name: string
+        @type base64: base64 encoded string
+        @type comment: string
+        @type content: string
+        @type _help: boolean
+        @param ticket: ID of the ticket
+        @param url: url of the document to be uploaded
+        @param name: name of the document
+        @param base64: content of the document in base64 encoded string
+        @param comment: depracated, use B{content} instead
+        @param content: if present, also add a followup, if the
+        documentation upload succeeded, for additional options, see
+        L{GLPI.add_ticket_followup}
+        @param _help: get usage information
+        """
+        
+        params = {'method':'glpi.createTicket',
+                  'session':self.session,
+                  'ticket':ticket}
+        if url: params['url'] = url
+        if name: params['name'] = name
+        if base64: params['base64'] = base64
+        if comment: params['comment'] = comment
+        if content: params['content'] = content
+        if _help: params['help'] = _help
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())        
+
+    def add_ticket_followup(self, ticket, content, source=None,
+                            private=None, reopen=None, close=None,
+                            _help=None):
+        """
+        Add a followup to an existing ticket if the authenticated user
+        can edit it.
+
+        Returns a hashtable of the modified ticket object (See L{GLPI.get_ticket}).
+
+        @type ticket: integer
+        @type content: string
+        @type source: string
+        @type private: boolean
+        @type reopen: boolean
+        @type close: boolean
+        @type _help: boolean
+
+        @param ticket: ID of the ticket
+        @param content: B{required} content of the new followup 
+        @param source: name of the RequestType (created if needed), defaults to 'WebServices'
+        @param private: mark followup as private, defaults to 0
+        @param reopen: set ticket to working state (deny solution for
+        'solved' ticket or answer for 'waiting' ticket)
+        @param close: close a 'solved' ticket
+        @param _help: get usage information
+        """
+        params = {'method':'glpi.createTicket',
+                  'session':self.session,
+                  'ticket':ticket,
+                  'content':content}
+        
+        if source: params['source'] = source
+        if private: params['private'] = private
+        if reopen: params['reopen'] = reopen
+        if close: params['close'] = close
+        if _help: params['help'] = _help
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())        
+
+    def add_ticket_observer(self,
+                            ticket,
+                            user=None,
+                            _help=None):
+        """
+        Add a new observer to an existing ticket.
+
+        Current user can add himself to a ticket he can view.
+
+        Other users can be added if allowed to update the ticket.
+
+        Returns a JSON serialized ticket upon success (as in
+        L{GLPI.get_ticket})
+
+        @type ticket: integer
+        @type user: integer
+        @param ticket: ID of the ticket
+        @param user: ID of the user
+        
+        """
+        params = {'method':'glpi.createTicket',
+                  'session':self.session,
+                  'ticket':ticket}
+        if user: params['user'] = user
+        if _help: params['help'] = _help
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())
+    
     def set_ticket_satisfaction(self):
         pass
 
