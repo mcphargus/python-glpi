@@ -59,6 +59,8 @@ class GLPI:
         @param login_password: pretty obvious
         """
         self.url = 'http://'+host+'/plugins/webservices/rest.php?'
+        
+        
         self.login_name = login_name
         self.login_password = login_password
         params = {'login_name':login_name,
@@ -73,13 +75,101 @@ class GLPI:
         except:
             raise Exception("Login incorrect or server down")
 
-    def get_server_status(self):
+    """
+    Un-authenticated methods
+    """
+
+    def get_server_status(self,_help=None):
         """
         Gets server status information from the GLPI server, mostly
         stating that things are OK.
         """
-        params = {'method':'glpi.status',
-                  'session':self.session}
+        params = {'method':'glpi.status'}
+        if _help: params['help'] = _help
+        request = urllib2.Request(self.url + urllib.urlencode(params))
+        response = urllib2.urlopen(request).read()
+        return json.loads(response)
+
+    def test(self,_help=None):
+        """
+        Simple ping test method.
+
+        Returns version information of GLPI and of plugins that provide methods
+
+        @type _help: boolean
+        @param _help: get usage information
+        """
+        params = {'method':'glpi.test'}
+        if _help: params['help'] = _help
+        request = urllib2.Request(self.url + urllib.urlencode(params))
+        response = urllib2.urlopen(request).read()
+        return json.loads(response)
+
+    def list_all_methods(self,_help=None):
+        """
+        Returns a list of all methods allowed to the current client
+
+        @type _help: boolean
+        @param _help: get usage information
+        """
+        params = {'method':'glpi.listAllMethods'}
+        if _help: params['help'] = _help
+        request = urllib2.Request(self.url + urllib.urlencode(params))
+        response = urllib2.urlopen(request).read()
+        return json.loads(response)
+
+    def list_entities(self,count=None,_help=None):
+        """
+        Returns a list of current entities defined by server
+        configuration for the client, or currently B{activated} for
+        the user (when authenticated)
+
+        @type _help: boolean
+        @param _help: get usage information
+        """
+        params = {'method':'glpi.listAllMethods'}
+        if self.session: params['session'] = self.session
+        if count:
+            if count.length < 2:
+                raise Exception("List needs to include a start and limit integer")
+            if count.length == 2:
+                params['start'] = count[0]
+                params['limit'] = count[1]
+        if _help: params['help'] = _help
+        request = urllib2.Request(self.url + urllib.urlencode(params))
+        response = urllib2.urlopen(request).read()
+        return json.loads(response)
+
+    def list_know_base_items(self, faq=None, category=None,
+                             contains=None, count=None, _help=None):
+
+        """
+        Returns a list of Knowbase or FAQ items available for the
+        current user (when authenticated) or in the public FAQ (if
+        configured)
+
+        @type faq: boolean
+        @type category: integer
+        @type contains: string
+        @type count: list
+        @type _help: boolean
+        @param faq: defaults to 0, returns FAQ
+        @param category: ID of the category to search in
+        @param count: iterable containing start and limit integers
+        @param _help: get usage information
+        """
+        params = {'method':'glpi.listKnowBaseItems'}
+        if self.session: params['session'] = self.session
+        if faq: params['faq'] = faq
+        if category: params['category'] = category
+        if contains: params['contains'] = contains 
+        if count:
+            if count.length < 2:
+                raise Exception("List needs to include a start and limit integer")
+            if count.length == 2:
+                params['start'] = count[0]
+                params['limit'] = count[1]
+        if _help: params['help'] = _help
         request = urllib2.Request(self.url + urllib.urlencode(params))
         response = urllib2.urlopen(request).read()
         return json.loads(response)
@@ -124,14 +214,13 @@ class GLPI:
 
     def get_ticket(self,ticket_id,id2name=None,_help=None):
         """
-        Retrieve a ticket from the GLPI server. Returns a JSON
-        serialized ticket
+        Returns a JSON serialized ticket
 
         @type ticket_id: integer
-        @param ticket_id: ID of the ticket being requested
         @type id2name: string
-        @param id2name: option to enable id to name translation of dropdown fields
         @type _help: boolean
+        @param ticket_id: ID of the ticket being requested
+        @param id2name: option to enable id to name translation of dropdown fields
         @param _help: return JSON serialized help about the API call
         """
         params = {'method':'glpi.getTicket',
@@ -151,14 +240,14 @@ class GLPI:
         U{https://forge.indepnet.net/embedded/glpi/annotated.html}
 
         @type itemtype: integer
-        @param itemtype: type of the item being requested
         @type _id:integer
-        @param _id: primary key of the item being requested
         @type show_label: boolean
-        @param show_label: show label
         @type show_name: boolean
-        @param show_name: show name
         @type _help: boolean
+        @param itemtype: type of the item being requested
+        @param _id: ID of the item being requested
+        @param show_label: show label
+        @param show_name: show name
         @param _help: list available options in JSON
         """
         params = {'method':'glpi.getObject',
@@ -178,17 +267,16 @@ class GLPI:
         Returns a JSON serialized computer object from the GLPI server
 
         @type computer: integer
-        @param computer: computerID
-
         @type id2name: boolean
-        @param id2name: option to enable id to name translation of dropdown fields
         @type infocoms: boolean
-        @param infocoms: return infocoms associated with the computer
         @type contracts: boolean
-        @param contracts: return contracts associated with the computer
         @type networkports: boolean
-        @param networkports: return information about computer's network ports
         @type _help: boolean
+        @param computer: computerID
+        @param id2name: option to enable id to name translation of dropdown fields
+        @param infocoms: return infocoms associated with the computer
+        @param contracts: return contracts associated with the network equipment
+        @param networkports: return information about computer's network ports
         @param _help: returns a serialized object representing help about how to use this method
         """
 
@@ -210,10 +298,10 @@ class GLPI:
         GLPI server.
 
         @type computer_id: integer
-        @param computer_id: ID of the computer
         @type id2name: boolean
-        @param id2name: associate labels with IDs and return with the rest of the JSON result
         @type _help: boolean
+        @param computer_id: ID of the computer
+        @param id2name: associate labels with IDs and return with the rest of the JSON result
         @param _help: return JSON serialized information about this API call
         """
         params = {'method':'glpi.getComputerInfoComs',
@@ -231,10 +319,10 @@ class GLPI:
         GLPI server.
 
         @type computer_id: integer
-        @param computer_id: ID of the computer
         @type id2name: boolean
-        @param id2name: associate labels with IDs and return with the rest of the JSON result
         @type _help: boolean
+        @param computer_id: ID of the computer
+        @param id2name: associate labels with IDs and return with the rest of the JSON result
         @param _help: return JSON serialized information about this API call
         """
 

@@ -151,11 +151,92 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_server_status"></a><span class="summary-sig-name">get_server_status</span>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a name="get_server_status"></a><span class="summary-sig-name">get_server_status</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
       Gets server status information from the GLPI server, mostly stating 
       that things are OK.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.get_server_status">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#test" class="summary-sig-name">test</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Simple ping test method.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.test">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#list_all_methods" class="summary-sig-name">list_all_methods</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns a list of all methods allowed to the current client</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_all_methods">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#list_entities" class="summary-sig-name">list_entities</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">count</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns a list of current entities defined by server configuration 
+      for the client, or currently <b>activated</b> for the user (when 
+      authenticated)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_entities">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#list_know_base_items" class="summary-sig-name">list_know_base_items</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">faq</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">category</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">contains</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">count</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns a list of Knowbase or FAQ items available for the current 
+      user (when authenticated) or in the public FAQ (if configured)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_know_base_items">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -227,7 +308,7 @@
         <span class="summary-sig-arg">ticket_id</span>,
         <span class="summary-sig-arg">id2name</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
-      Retrieve a ticket from the GLPI server.</td>
+      Returns a JSON serialized ticket</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.get_ticket">source&nbsp;code</a></span>
             
@@ -895,6 +976,116 @@
   </dl>
 </td></tr></table>
 </div>
+<a name="test"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">test</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.test">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Simple ping test method.</p>
+  <p>Returns version information of GLPI and of plugins that provide 
+  methods</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get usage information</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="list_all_methods"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">list_all_methods</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_all_methods">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a list of all methods allowed to the current client</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get usage information</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="list_entities"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">list_entities</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">count</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_entities">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a list of current entities defined by server configuration for
+  the client, or currently <b>activated</b> for the user (when 
+  authenticated)</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get usage information</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="list_know_base_items"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">list_know_base_items</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">faq</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">category</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">contains</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">count</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_know_base_items">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a list of Knowbase or FAQ items available for the current user
+  (when authenticated) or in the public FAQ (if configured)</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>faq</code></strong> (boolean) - defaults to 0, returns FAQ</li>
+        <li><strong class="pname"><code>category</code></strong> (integer) - ID of the category to search in</li>
+        <li><strong class="pname"><code>count</code></strong> (list) - iterable containing start and limit integers</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get usage information</li>
+        <li><strong class="pname"><code>contains</code></strong> (string)</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
 <a name="get_ticket"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -912,8 +1103,7 @@
     </td>
   </tr></table>
   
-  <p>Retrieve a ticket from the GLPI server. Returns a JSON serialized 
-  ticket</p>
+  <p>Returns a JSON serialized ticket</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -951,7 +1141,7 @@
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
         <li><strong class="pname"><code>itemtype</code></strong> (integer) - type of the item being requested</li>
-        <li><strong class="pname"><code>_id</code></strong> (integer) - primary key of the item being requested</li>
+        <li><strong class="pname"><code>_id</code></strong> (integer) - ID of the item being requested</li>
         <li><strong class="pname"><code>show_label</code></strong> (boolean) - show label</li>
         <li><strong class="pname"><code>show_name</code></strong> (boolean) - show name</li>
         <li><strong class="pname"><code>_help</code></strong> (boolean) - list available options in JSON</li>
@@ -986,7 +1176,7 @@
         <li><strong class="pname"><code>computer</code></strong> (integer) - computerID</li>
         <li><strong class="pname"><code>id2name</code></strong> (boolean) - option to enable id to name translation of dropdown fields</li>
         <li><strong class="pname"><code>infocoms</code></strong> (boolean) - return infocoms associated with the computer</li>
-        <li><strong class="pname"><code>contracts</code></strong> (boolean) - return contracts associated with the computer</li>
+        <li><strong class="pname"><code>contracts</code></strong> (boolean) - return contracts associated with the network equipment</li>
         <li><strong class="pname"><code>networkports</code></strong> (boolean) - return information about computer's network ports</li>
         <li><strong class="pname"><code>_help</code></strong> (boolean) - returns a serialized object representing help about how to use 
           this method</li>
@@ -2045,7 +2235,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Oct  7 16:30:19 2012
+    Generated by Epydoc 3.0.1 on Sun Oct  7 17:18:15 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
