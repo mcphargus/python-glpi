@@ -731,7 +731,12 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="set_ticket_satisfaction"></a><span class="summary-sig-name">set_ticket_satisfaction</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#set_ticket_satisfaction" class="summary-sig-name">set_ticket_satisfaction</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ticket</span>,
+        <span class="summary-sig-arg">satisfaction</span>,
+        <span class="summary-sig-arg">comment</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Answer to the ticket satisfaction survey</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.set_ticket_satisfaction">source&nbsp;code</a></span>
             
@@ -747,7 +752,12 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="set_ticket_validation"></a><span class="summary-sig-name">set_ticket_validation</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#set_ticket_validation" class="summary-sig-name">set_ticket_validation</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">approval</span>,
+        <span class="summary-sig-arg">status</span>,
+        <span class="summary-sig-arg">comment</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Answer to the ticket approval request.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.set_ticket_validation">source&nbsp;code</a></span>
             
@@ -763,7 +773,10 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="create_objects"></a><span class="summary-sig-name">create_objects</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#create_objects" class="summary-sig-name">create_objects</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">fields</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Create new objects</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.create_objects">source&nbsp;code</a></span>
             
@@ -779,7 +792,10 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="delete_objects"></a><span class="summary-sig-name">delete_objects</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#delete_objects" class="summary-sig-name">delete_objects</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">fields</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Delete or purge objects from GLPI.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.delete_objects">source&nbsp;code</a></span>
             
@@ -795,7 +811,10 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="update_objects"></a><span class="summary-sig-name">update_objects</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#update_objects" class="summary-sig-name">update_objects</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">fields</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Update existing objects in GLPI.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.update_objects">source&nbsp;code</a></span>
             
@@ -811,7 +830,12 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="link_objects"></a><span class="summary-sig-name">link_objects</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#link_objects" class="summary-sig-name">link_objects</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">fields</span>,
+        <span class="summary-sig-arg">_help</span>)</span><br />
+      Link an object to another object (when it is impossible with <a 
+      href="pyglpi.pyglpi.GLPI-class.html#create_objects" 
+      class="link">GLPI.create_objects</a>).</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.link_objects">source&nbsp;code</a></span>
             
@@ -1818,6 +1842,182 @@
   </dl>
 </td></tr></table>
 </div>
+<a name="set_ticket_satisfaction"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_ticket_satisfaction</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">ticket</span>,
+        <span class="sig-arg">satisfaction</span>,
+        <span class="sig-arg">comment</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.set_ticket_satisfaction">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Answer to the ticket satisfaction survey</p>
+  <p>Returns a JSON serialized ticket (See <a 
+  href="pyglpi.pyglpi.GLPI-class.html#get_ticket" 
+  class="link">GLPI.get_ticket</a>)</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>ticket</code></strong> (integer) - ID of ticket</li>
+        <li><strong class="pname"><code>satisfaction</code></strong> (integer) - ID of the satisfaction answer, 0-5</li>
+        <li><strong class="pname"><code>comment</code></strong> (string) - optional comment</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get usage information</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="set_ticket_validation"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_ticket_validation</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">approval</span>,
+        <span class="sig-arg">status</span>,
+        <span class="sig-arg">comment</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.set_ticket_validation">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Answer to the ticket approval request.</p>
+  <p>Returns a JSON serialized ticket upon success (See <a 
+  href="pyglpi.pyglpi.GLPI-class.html#get_ticket" 
+  class="link">GLPI.get_ticket</a>).</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>approval</code></strong> (integer) - ID of the request</li>
+        <li><strong class="pname"><code>status</code></strong> (string) - request status, can be:
+          <ul>
+            <li>
+              waiting
+            </li>
+            <li>
+              rejected
+            </li>
+            <li>
+              accepted
+            </li>
+          </ul></li>
+        <li><strong class="pname"><code>comment</code></strong> (string) - optional string, <b>required</b> if status is 'rejected'</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get usage information</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="create_objects"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">create_objects</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">fields</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.create_objects">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Create new objects</p>
+  <p>User must be super admin to run this method.</p>
+  <p>Returns a newly created JSON serialized object upon success.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>fields</code></strong> (list) - inject data into GLPI</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get usage information</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="delete_objects"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">delete_objects</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">fields</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.delete_objects">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Delete or purge objects from GLPI.</p>
+  <p>User must be super admin to run this method.</p>
+  <p>TODO: what does this thing return?</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="update_objects"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">update_objects</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">fields</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.update_objects">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Update existing objects in GLPI.</p>
+  <p>User must be super admin to run this method.</p>
+  <p>TODO: What does this thing return?</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="link_objects"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">link_objects</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">fields</span>,
+        <span class="sig-arg">_help</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.link_objects">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Link an object to another object (when it is impossible with <a 
+  href="pyglpi.pyglpi.GLPI-class.html#create_objects" 
+  class="link">GLPI.create_objects</a>).</p>
+  <p>User must be super admin to run this method.</p>
+  <p>TODO: What does this thing return?</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
 <br />
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
@@ -1845,7 +2045,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Oct  7 16:04:23 2012
+    Generated by Epydoc 3.0.1 on Sun Oct  7 16:30:19 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -889,10 +889,8 @@ class GLPI:
         response = urllib2.urlopen(self.__request__(params))
         return json.loads(response.read())        
 
-    def add_ticket_observer(self,
-                            ticket,
-                            user=None,
-                            _help=None):
+    def add_ticket_observer(self, ticket, user=None, _help=None):
+
         """
         Add a new observer to an existing ticket.
 
@@ -917,23 +915,130 @@ class GLPI:
         response = urllib2.urlopen(self.__request__(params))
         return json.loads(response.read())
     
-    def set_ticket_satisfaction(self):
-        pass
+    def set_ticket_satisfaction(self, ticket, satisfaction,
+                                comment=None, _help=None):
+        """
+        Answer to the ticket satisfaction survey
 
-    def set_ticket_validation(self):
-        pass
+        Returns a JSON serialized ticket (See L{GLPI.get_ticket})
 
-    def create_objects(self):
-        pass
+        @type ticket: integer
+        @type satisfaction: integer
+        @type comment: string
+        @type _help: boolean
 
-    def delete_objects(self):
-        pass
+        @param ticket: ID of ticket
+        @param satisfaction: ID of the satisfaction answer, 0-5
+        @param comment: optional comment
+        @param _help: get usage information
+        """
+        params = {'method':'glpi.createTicket',
+                  'session':self.session,
+                  'ticket':ticket,
+                  'satisfaction':satisfaction}
+        if comment: params['comment'] = comment
+        if _help: params['help'] = _help
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())        
 
-    def update_objects(self):
-        pass
+    def set_ticket_validation(self, approval, status, comment=None,
+                              _help=None):
 
-    def link_objects(self):
-        pass
+        """
+        Answer to the ticket approval request.
+
+        Returns a JSON serialized ticket upon success (See L{GLPI.get_ticket}).
+
+        @type approval: integer        
+        @type status: string
+        @type comment: string
+        @type _help: boolean
+        @param approval: ID of the request
+        @param status: request status, can be:
+          - waiting
+          - rejected
+          - accepted
+        @param comment: optional string, B{required} if status is 'rejected'
+        @param _help: get usage information
+        """
+        params = {'method':'glpi.createTicket',
+                  'session':self.session,
+                  'approval':approval,
+                  'status':status}
+        if comment: params['comment'] = comment 
+        if _help: params['help'] = _help
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())
+    
+    def create_objects(self,fields,_help=None):
+        """
+        Create new objects
+
+        User must be super admin to run this method.
+
+        Returns a newly created JSON serialized object upon success.
+
+        @type fields: list
+        @type _help: boolean
+        @param fields: inject data into GLPI
+        @param _help: get usage information
+        """
+        params = {'method':'glpi.createTicket',
+                  'session':self.session,
+                  'fields':fields}
+        if _help: params['help'] = _help
+
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())        
+
+    def delete_objects(self,fields,_help=None):
+        """
+        Delete or purge objects from GLPI.
+
+        User must be super admin to run this method.
+
+        TODO: what does this thing return?        
+        """
+        params = {'method':'glpi.createTicket',
+                  'session':self.session,
+                  'fields':fields}
+        if _help: params['help'] = _help
+
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())
+
+    def update_objects(self,fields,_help=None):
+        """
+        Update existing objects in GLPI.
+
+        User must be super admin to run this method.
+
+        TODO: What does this thing return?
+        
+        """
+        params = {'method':'glpi.createTicket',
+                  'session':self.session,
+                  'fields':fields}
+        if _help: params['help'] = _help
+
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())        
+
+    def link_objects(self,fields,_help):
+        """
+        Link an object to another object (when it is impossible with L{GLPI.create_objects}).
+
+        User must be super admin to run this method.
+
+        TODO: What does this thing return?
+        """
+        params = {'method':'glpi.createTicket',
+                  'session':self.session,
+                  'fields':fields}
+        if _help: params['help'] = _help
+
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())        
 
 if __name__ == '__main__':
     username = raw_input("Enter your GLPI username: ")
@@ -941,4 +1046,3 @@ if __name__ == '__main__':
     host = raw_input("Enter your hostname: ")
     glpi = GLPI()
     glpi.connect(host,username,password)
-    pprint.pprint(glpi.get_network_ports(5,"NetworkEquipment"))
