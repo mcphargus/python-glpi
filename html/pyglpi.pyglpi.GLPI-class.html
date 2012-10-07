@@ -460,7 +460,14 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="list_groups"></a><span class="summary-sig-name">list_groups</span>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#list_groups" class="summary-sig-name">list_groups</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">mine</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">parent</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">under</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">withparent</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">filter</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">count</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
       Return a JSON serialized list of groups from the GLPI server.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_groups">source&nbsp;code</a></span>
@@ -477,7 +484,11 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="list_helpdesk_items"></a><span class="summary-sig-name">list_helpdesk_items</span>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#list_helpdesk_items" class="summary-sig-name">list_helpdesk_items</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">itemtype</span>,
+        <span class="summary-sig-arg">id2name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">count</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
       Return a JSON serialized list of helpdesk items from the GLPI server.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_helpdesk_items">source&nbsp;code</a></span>
@@ -494,7 +505,9 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="list_helpdesk_types"></a><span class="summary-sig-name">list_helpdesk_types</span>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#list_helpdesk_types" class="summary-sig-name">list_helpdesk_types</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">count</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
       Return a JSON serialized list of helpdesk types from the GLPI server.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_helpdesk_types">source&nbsp;code</a></span>
@@ -511,7 +524,9 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="list_inventory_objects"></a><span class="summary-sig-name">list_inventory_objects</span>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#list_inventory_objects" class="summary-sig-name">list_inventory_objects</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">count</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
       Return a JSON serialized list of inventory objects from the GLPI 
       server.</td>
           <td align="right" valign="top">
@@ -529,7 +544,9 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="list_objects"></a><span class="summary-sig-name">list_objects</span>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#list_objects" class="summary-sig-name">list_objects</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">count</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
       Return as JSON serialized list of objects from the GLPI server.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_objects">source&nbsp;code</a></span>
@@ -546,7 +563,26 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="list_tickets"></a><span class="summary-sig-name">list_tickets</span>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a href="pyglpi.pyglpi.GLPI-class.html#list_tickets" class="summary-sig-name">list_tickets</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">mine</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">user</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">recipient</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">group</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">mygroups</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">category</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">status</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">startdate</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">enddate</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">itemtype</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">item</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">entity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">satisfaction</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">approval</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">approver</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">order</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">id2name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">count</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_help</span>=<span class="summary-sig-default">None</span>)</span><br />
       Return a JSON serialized list of tickets from the GLPI server.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_tickets">source&nbsp;code</a></span>
@@ -792,6 +828,7 @@
   <p>Connect to a running GLPI instance that has the webservices plugin 
   enabled. <a href="http://plugins.glpi-project.org/spip.php?article94" 
   target="_top">It's available here</a></p>
+  <p>Returns True if connection was successful.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -1123,7 +1160,7 @@
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>count</code></strong> (integer) - start, limit</li>
+        <li><strong class="pname"><code>count</code></strong> (list) - interable containing start and limit integers</li>
         <li><strong class="pname"><code>_help</code></strong> (boolean) - get help from server about this API call</li>
     </ul></dd>
   </dl>
@@ -1186,7 +1223,334 @@
         <li><strong class="pname"><code>helpdesk</code></strong> (string) - filter on 'is_helpdeskvisible' attribute (TicketCategory) 
           (deprecated, use criteria=helpdesk intead)</li>
         <li><strong class="pname"><code>criteria</code></strong> (string) - filter on a boolean attribute (is_xxx)</li>
-        <li><strong class="pname"><code>count</code></strong> (integer) - start, limit</li>
+        <li><strong class="pname"><code>count</code></strong> (list) - iterable containing start and limit integers</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get usage information</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="list_groups"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">list_groups</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">mine</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">parent</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">under</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">withparent</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">filter</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">count</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_groups">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a JSON serialized list of groups from the GLPI server.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>mine</code></strong> (boolean) - only retrieve groups of connected user</li>
+        <li><strong class="pname"><code>parent</code></strong> (integer) - only retrieve groups under selected parent (group ID)</li>
+        <li><strong class="pname"><code>under</code></strong> (integer) - only retrive child groups of selected one (group ID)</li>
+        <li><strong class="pname"><code>withparent</code></strong> (boolean) - also search for recursive group in parent's entities</li>
+        <li><strong class="pname"><code>filter</code></strong> (string) - filter, options include
+          <ul>
+            <li>
+              is_requester
+            </li>
+            <li>
+              is_assign
+            </li>
+            <li>
+              is_notify
+            </li>
+            <li>
+              is_itemgroup
+            </li>
+            <li>
+              is_usergroup
+            </li>
+          </ul></li>
+        <li><strong class="pname"><code>count</code></strong> (list) - iterable containing start and limit integers</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get usage information</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="list_helpdesk_items"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">list_helpdesk_items</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">itemtype</span>,
+        <span class="sig-arg">id2name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">count</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_helpdesk_items">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a JSON serialized list of helpdesk items from the GLPI 
+  server.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>itemtype</code></strong> (string) - List <b>allowed</b> items for the authenticated user to open a 
+          helpdesk ticket on, can be:
+          <ul>
+            <li>
+              my: returns all my devices
+            </li>
+            <li>
+              empty: returns general helpdesk items
+            </li>
+          </ul></li>
+        <li><strong class="pname"><code>id2name</code></strong> (boolean) - option to enable id to name translation of dropdown menus</li>
+        <li><strong class="pname"><code>count</code></strong> (list) - iterable containing start and limit integers</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - option to get usage information</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="list_helpdesk_types"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">list_helpdesk_types</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">count</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_helpdesk_types">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a JSON serialized list of helpdesk types from the GLPI 
+  server.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>count</code></strong> (list) - iterable containing start and limit integers</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get usage information</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="list_inventory_objects"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">list_inventory_objects</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">count</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_inventory_objects">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a JSON serialized list of inventory objects from the GLPI 
+  server.</p>
+  <p>User must be a super admin to use this method.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>count</code></strong> (list) - list including start and limit</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get usage information</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="list_objects"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">list_objects</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">count</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_objects">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return as JSON serialized list of objects from the GLPI server.</p>
+  <p>User must be a super admin to use this method.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>count</code></strong> (list) - list including start and limit</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get usage information</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="list_tickets"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">list_tickets</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">mine</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">user</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">recipient</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">group</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">mygroups</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">category</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">status</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">startdate</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">enddate</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">itemtype</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">item</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">entity</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">satisfaction</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">approval</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">approver</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">order</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">id2name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">count</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_help</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pyglpi.pyglpi-pysrc.html#GLPI.list_tickets">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a JSON serialized list of tickets from the GLPI server.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>mine</code></strong> (boolean) - list tickets of user <b>or</b> recipient</li>
+        <li><strong class="pname"><code>user</code></strong> (integer) - ID of the victim: person concerned by the ticket</li>
+        <li><strong class="pname"><code>recipient</code></strong> (integer) - ID of the requestor: person who created the ticket</li>
+        <li><strong class="pname"><code>group</code></strong> (integer) - ID of the requestor group (must have show_all_ticket or 
+          show_group_ticket right)</li>
+        <li><strong class="pname"><code>mygroups</code></strong> (boolean) - list of groups of current user</li>
+        <li><strong class="pname"><code>category</code></strong> (integer) - ID of the category of the ticket</li>
+        <li><strong class="pname"><code>status</code></strong> (string) - status of the ticket, must be:
+          <ul>
+            <li>
+              notold
+            </li>
+            <li>
+              old
+            </li>
+            <li>
+              process
+            </li>
+            <li>
+              waiting
+            </li>
+            <li>
+              old_done
+            </li>
+            <li>
+              new
+            </li>
+            <li>
+              old_notdone
+            </li>
+            <li>
+              assign
+            </li>
+            <li>
+              plan
+            </li>
+            <li>
+              all
+            </li>
+          </ul></li>
+        <li><strong class="pname"><code>startdate</code></strong> (datetime) - start of the period where the ticket is active (close date after 
+          this)</li>
+        <li><strong class="pname"><code>enddate</code></strong> (datetime) - end of the period where the ticket is active (open date before 
+          this)</li>
+        <li><strong class="pname"><code>itemtype</code></strong> (string) - ID of the type of the item (see <a 
+          href="pyglpi.pyglpi.GLPI-class.html#list_helpdesk_types" 
+          class="link">GLPI.list_helpdesk_types</a>)</li>
+        <li><strong class="pname"><code>item</code></strong> (integer) - ID of the item, requires itemtype</li>
+        <li><strong class="pname"><code>entity</code></strong> (integer) - ID of the entity of the ticket</li>
+        <li><strong class="pname"><code>satisfaction</code></strong> (integer) - only closed tickets with a satisfaction survey:
+          <ol start="0">
+            <li>
+              all
+            </li>
+            <li>
+              waiting
+            </li>
+            <li>
+              answered
+            </li>
+          </ol></li>
+        <li><strong class="pname"><code>approval</code></strong> (string) - only tickets with a validation request:
+          <ul>
+            <li>
+              all
+            </li>
+            <li>
+              waiting
+            </li>
+            <li>
+              accepted
+            </li>
+            <li>
+              pending
+            </li>
+          </ul></li>
+        <li><strong class="pname"><code>approver</code></strong> (integer) - user ID, only tickets with a validation request sent to this user</li>
+        <li><strong class="pname"><code>order</code></strong> (list) - list of allowed key names:
+          <ul>
+            <li>
+              id
+            </li>
+            <li>
+              date
+            </li>
+            <li>
+              closedate
+            </li>
+            <li>
+              date_mod
+            </li>
+            <li>
+              status
+            </li>
+            <li>
+              users_id
+            </li>
+            <li>
+              groups_id
+            </li>
+            <li>
+              entities_id
+            </li>
+            <li>
+              priority
+            </li>
+          </ul></li>
+        <li><strong class="pname"><code>id2name</code></strong> (boolean) - option to enable id to name translation of dropdown menus</li>
+        <li><strong class="pname"><code>count</code></strong> (list) - interable including start and limit integers</li>
+        <li><strong class="pname"><code>_help</code></strong> (boolean) - get usage information</li>
     </ul></dd>
   </dl>
 </td></tr></table>
@@ -1277,7 +1641,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Oct  5 17:44:43 2012
+    Generated by Epydoc 3.0.1 on Sun Oct  7 15:21:55 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

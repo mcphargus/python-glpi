@@ -14,7 +14,7 @@ import sys
 
 class GLPI:
     """
-    
+
     This is a python interface to the U{GLPI webservices plugin
     <http://plugins.glpi-project.org/spip.php?article94>} It depends
     heavily on JSON, urllib and urllib2. Requires python 2.7. Also,
@@ -35,10 +35,10 @@ class GLPI:
     automatically added to the GET request, which means the
     webservices API will treat them as being true. You've been warned.
     """
-    
-    def __init__(self):        
+
+    def __init__(self):
         pass
-        
+
     def __request__(self,params):
         return self.url + urllib.urlencode(params)
 
@@ -67,7 +67,7 @@ class GLPI:
         request = urllib2.Request(self.url + urllib.urlencode(params))
         response = urllib2.urlopen(request).read()
         try:
-            session_id = json.loads(response)['session']       
+            session_id = json.loads(response)['session']
             self.session = session_id
             return True
         except:
@@ -133,7 +133,7 @@ class GLPI:
         @param id2name: option to enable id to name translation of dropdown fields
         @type _help: boolean
         @param _help: return JSON serialized help about the API call
-        """        
+        """
         params = {'method':'glpi.getTicket',
                   'ticket':ticket_id,
                   'session':self.session}
@@ -163,7 +163,7 @@ class GLPI:
         """
         params = {'method':'glpi.getObject',
                   'session':self.session}
-        
+
         if itemtype: params['itemtype'] = itemtype
         if _id: params['id'] = _id
         if show_label: params['show_label'] = show_label
@@ -179,7 +179,7 @@ class GLPI:
 
         @type computer: integer
         @param computer: computerID
-        
+
         @type id2name: boolean
         @param id2name: option to enable id to name translation of dropdown fields
         @type infocoms: boolean
@@ -268,7 +268,7 @@ class GLPI:
         params = {'method':'glpi.getNetworkEquipment',
                   'session':self.session,
                   'id':network_equipment_id}
-        
+
         if id2name: params['id2name'] = id2name
         if infocoms: params['infocoms'] = infocoms
         if contracts: params['contracts'] = contracts
@@ -351,27 +351,32 @@ class GLPI:
 
         if id2name: params['id2name'] = id2name
         if _help: params['help'] = _help
-        
+
         response = urllib2.urlopen(self.__request__(params))
         return json.loads(response.read())
-        
+
 
     def list_computers(self,count=None,_help=None):
         """
         Return a JSON serialized list of computers from the GLPI
         server.
 
-        @type count:integer
-        @param count: start, limit
+        @type count: list
         @type _help: boolean
+        @param count: interable containing start and limit integers
         @param _help: get help from server about this API call
         """
         params = {'method':'glpi.listComputers',
                   'session':self.session}
-        if count: params['count'] = count
+        if count:
+            if count.length < 2:
+                raise Exception("List needs to include a start and limit integer")
+            if count.length == 2:
+                params['start'] = count[0]
+                params['limit'] = count[1]
         if _help: params['help'] = _help
         response = urllib2.urlopen(self.__request__(params))
-        return json.loads(response.read())        
+        return json.loads(response.read())
 
     def list_dropdown_values(self,dropdown,_id=None,parent=None,name=None,
                              helpdesk=None,criteria=None,count=None,_help=None):
@@ -380,6 +385,12 @@ class GLPI:
         server.
 
         @type dropdown: string
+        @type _id: integer
+        @type name: string
+        @type helpdesk: string
+        @type criteria: string
+        @type count: list
+        @type _help: boolean
         @param dropdown: name of the dropdown, must be a GLPI class
         name or a Special dropdown name. Special dropdowns are:
           - ticketstatus
@@ -389,17 +400,13 @@ class GLPI:
           - ticketpriority
           - ticketglobalvalidation
           - ticketvalidationstatus
-        @type _id: integer
         @param _id: id of the entry
-        @type name: string
         @param name: optional string (mysql % joker allowed)
-        @type helpdesk: string
         @param helpdesk: filter on 'is_helpdeskvisible' attribute
         (TicketCategory) (deprecated, use criteria=helpdesk intead)
-        @type criteria: string
         @param criteria: filter on a boolean attribute (is_xxx)
-        @type count: integer
-        @param count: start, limit        
+        @param count: iterable containing start and limit integers
+        @param _help: get usage information
         """
         params = {'method':'glpi.listDropdownValues',
                   'session':self.session,
@@ -409,7 +416,12 @@ class GLPI:
         if name: params['name'] = name
         if helpdesk: params['helpdesk'] = helpdesk
         if criteria: params['criteria'] = criteria
-        if count: params['count'] = count
+        if count:
+            if count.length < 2:
+                raise Exception("List needs to include a start and limit integer")
+            if count.length == 2:
+                params['start'] = count[0]
+                params['limit'] = count[1]
         if _help: params['help'] = _help
         response = urllib2.urlopen(self.__request__(params))
         return json.loads(response.read())
@@ -424,7 +436,7 @@ class GLPI:
         @type under: integer
         @type withparent: boolean
         @type filter: string
-        @type count: pair of integers
+        @type count: list
         @type _help: boolean
 
         @param mine: only retrieve groups of connected user
@@ -437,6 +449,8 @@ class GLPI:
           - is_notify
           - is_itemgroup
           - is_usergroup
+        @param count: iterable containing start and limit integers
+        @param _help: get usage information
         """
         params = {'method':'glpi.listGroups',
                   'session':self.session}
@@ -445,50 +459,232 @@ class GLPI:
         if under: params['under'] = under
         if withparent: params['withparent'] = withparent
         if filter: params['filter'] = filter
-        if count: params['count'] = count
+        if count:
+            if count.length < 2:
+                raise Exception("List needs to include a start and limit integer")
+            if count.length == 2:
+                params['start'] = count[0]
+                params['limit'] = count[1]
         if _help: params['help'] = _help
         response = urllib2.urlopen(self.__request__(params))
         return json.loads(response.read())
-        pass
 
-    def list_helpdesk_items(self):
+
+    def list_helpdesk_items(self,itemtype,id2name=None,count=None,_help=None):
         """
         Return a JSON serialized list of helpdesk items from the GLPI
         server.
-        """
-        pass
 
-    def list_helpdesk_types(self):
+        @type itemtype: string
+        @type id2name: boolean
+        @type count: list
+        @type _help: boolean
+        @param itemtype: List B{allowed} items for the authenticated
+        user to open a helpdesk ticket on, can be:
+          - my: returns all my devices
+          - empty: returns general helpdesk items
+        @param id2name: option to enable id to name translation of dropdown menus
+        @param count: iterable containing start and limit integers
+        @param _help: option to get usage information
+        """
+        params = {'method':'glpi.listHelpdeskItems',
+                  'session':self.session,
+                  'itemtype':itemtype}
+
+        if id2name: params['id2name'] = id2name
+        if count:
+            if count.length < 2:
+                raise Exception("List needs to include a start and limit integer")
+            if count.length == 2:
+                params['start'] = count[0]
+                params['limit'] = count[1]
+        if _help: params['help'] = _help
+
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())
+
+    def list_helpdesk_types(self,count=None,_help=None):
         """
         Return a JSON serialized list of helpdesk types from the GLPI
         server.
-        """
-        pass
 
-    def list_inventory_objects(self):
+        @type count: list
+        @type _help: boolean
+        @param count: iterable containing start and limit integers
+        @param _help: get usage information
+        """
+
+        params = {'method':'glpi.listHelpdeskTypes',
+                  'session':self.session}
+        if count:
+            if count.length < 2:
+                raise Exception("List needs to include a start and limit integer")
+            if count.length == 2:
+                params['start'] = count[0]
+                params['limit'] = count[1]
+        if _help: params['help'] = _help
+
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())
+
+    def list_inventory_objects(self,count=None,_help=None):
         """
         Return a JSON serialized list of inventory objects from the
         GLPI server.
-        """
-        pass
 
-    def list_objects(self):
+        User must be a super admin to use this method.
+
+        @type count: list
+        @type _help: boolean
+        @param count: list including start and limit
+        @param _help: get usage information
+        """
+        params = {'method':'glpi.listInventoryObjects',
+                  'session':self.session}
+        if count:
+            if count.length < 2:
+                raise Exception("List needs to include a start and limit integer")
+            if count.length == 2:
+                params['start'] = count[0]
+                params['limit'] = count[1]
+        if _help: params['help'] = _help
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())
+
+    def list_objects(self,count=None,_help=None):
         """
         Return as JSON serialized list of objects from the GLPI server.
-        """
-        pass
 
-    def list_tickets(self):
+        User must be a super admin to use this method.
+
+        @type count: list
+        @type _help: boolean
+        @param count: list including start and limit
+        @param _help: get usage information
+        """
+        params = {'method':'glpi.listObjects',
+                  'session':self.session}
+        if count:
+            if count.length < 2:
+                raise Exception("List needs to include a start and limit integer")
+            if count.length == 2:
+                params['start'] = count[0]
+                params['limit'] = count[1]
+        if _help: params['help'] = _help
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())
+
+    def list_tickets(self,mine=None,user=None, recipient=None,
+                     group=None, mygroups=None, category=None,
+                     status=None, startdate=None, enddate=None,
+                     itemtype=None, item=None, entity=None,
+                     satisfaction=None, approval=None, approver=None,
+                     order=None, id2name=None, count=None,
+                     _help=None):        
         """
         Return a JSON serialized list of tickets from the GLPI server.
+
+
+        @type mine: boolean
+        @type user: integer
+        @type recipient: integer
+        @type group: integer
+        @type mygroups: boolean
+        @type category: integer
+        @type status: string
+        @type startdate: datetime
+        @type enddate: datetime
+        @type itemtype: string
+        @type item: integer
+        @type entity: integer
+        @type satisfaction: integer
+        @type approval: string
+        @type approver: integer
+        @type order: list
+        @type count: list
+        @type id2name: boolean
+        @type _help: boolean
+        @param mine: list tickets of user B{or} recipient
+        @param user: ID of the victim: person concerned by the ticket
+        @param recipient: ID of the requestor: person who created the ticket
+        @param group: ID of the requestor group (must have
+        show_all_ticket or show_group_ticket right)
+        @param mygroups: list of groups of current user
+        @param category: ID of the category of the ticket
+        @param status: status of the ticket, must be:
+          - notold
+          - old
+          - process
+          - waiting
+          - old_done
+          - new
+          - old_notdone
+          - assign
+          - plan
+          - all
+        @param startdate: start of the period where the ticket is active (close date after this)
+        @param enddate: end of the period where the ticket is active (open date before this)
+        @param itemtype: ID of the type of the item (see L{GLPI.list_helpdesk_types})
+        @param item: ID of the item, requires itemtype
+        @param entity: ID of the entity of the ticket
+        @param satisfaction: only closed tickets with a satisfaction survey:
+          0. all
+          1. waiting
+          2. answered
+        @param approval: only tickets with a validation request:
+          - all
+          - waiting
+          - accepted
+          - pending
+        @param approver: user ID, only tickets with a validation request sent to this user
+        @param order: list of allowed key names:
+          - id
+          - date
+          - closedate
+          - date_mod
+          - status
+          - users_id
+          - groups_id
+          - entities_id
+          - priority
+        @param id2name: option to enable id to name translation of dropdown menus
+        @param count: interable including start and limit integers
+        @param _help: get usage information
         """
-        pass
+        params = {'method':'glpi.listUsers',
+                  'session':self.session}
+        if mine: params['mine'] = mine
+        if user: params['user'] = user
+        if recipent: params['recipient'] = recipient
+        if group: params['group'] = group
+        if mygroups: params['mygroups'] = mygroups
+        if category: params['category'] = category
+        if status: params['status'] = status
+        if startdate: params['startdate'] = startdate
+        if enddate: params['enddate'] = enddate
+        if itemtype: params['itemtype'] = itemtype
+        if item: params['item'] = item
+        if entity: params['entity'] = entity
+        if satisfaction: params['satisfaction'] = satisfaction
+        if approval: params['approval'] = approval
+        if approver: params['approver'] = approver
+        if order: params['order'] = order
+        if id2name: params['id2name'] = id2name
+        if count:
+            if count.length < 2:
+                raise Exception("List needs to include a start and limit integer")
+            if count.length == 2:
+                params['start'] = count[0]
+                params['limit'] = count[1]
+        if _help: params['help'] = _help
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())
 
     def list_users(self):
         """
         Return a JSON serialized list of users from the GLPI server.
         """
-        
+
         params = {'method':'glpi.listUsers',
                   'session':self.session}
         response = urllib2.urlopen(self.__request__(params))
@@ -506,42 +702,42 @@ class GLPI:
         """
         Returns a JSON serialized version of a ticket upon
         success. Unless otherwise noted, all params are optional
-        
+
         @type entity: integer
-        @param entity: ID, optional, default is current on, must be in the active ones
         @type user: integer or list of integers
-        @param user: requester ID, default to current logged in user
         @type group: integer or list of integers
-        @param group: requester ID, default is None
         @type requester: integer or list of integers
-        @param requester: additional requester(s) with mail notification
         @type victim: integer or list of integers
-        @param victim: same as requester, without mail notification
         @type observer: integer or list of integers
-        @param observer: additional observers
         @type date: ISO formatted date string
-        @param date: defaults to system date
         @type itemtype: integer
-        @param itemtype: id of the type of the item, optional, default none
         @type item: integer
-        @param item: ID of the item, optional, default none
         @type title: string
-        @param title: B{required} short description of the issue
         @type content: string
-        @param content: B{required} longer description of the issue
         @type urgency: integer
-        @param urgency: defaults to 3, 1-5 are accepted
         @type _type: integer
-        @param _type: type of ticket, defaults to 1
         @type source: string
-        @param source: name of the RequestType, optional, defaults WebServices
         @type category: integer
-        @param category: default is none
         @type user_email: string
-        @param user_email: enable notification to this email address
         @type user_email_notification: boolean
-        @param user_email_notification: enable notification to the users email (if known)
         @type _help: boolean
+        @param entity: ID, optional, default is current on, must be in the active ones
+        @param user: requester ID, default to current logged in user
+        @param group: requester ID, default is None
+        @param requester: additional requester(s) with mail notification
+        @param victim: same as requester, without mail notification
+        @param observer: additional observers
+        @param date: defaults to system date
+        @param itemtype: id of the type of the item, optional, default none
+        @param item: ID of the item, optional, default none
+        @param title: B{required} short description of the issue
+        @param content: B{required} longer description of the issue
+        @param urgency: defaults to 3, 1-5 are accepted
+        @param _type: type of ticket, defaults to 1
+        @param source: name of the RequestType, optional, defaults WebServices
+        @param category: default is none
+        @param user_email: enable notification to this email address
+        @param user_email_notification: enable notification to the users email (if known)
         @param _help: list available options in JSON
         """
 
@@ -565,7 +761,7 @@ class GLPI:
         if user_email: params['user_email'] = user_email
         if user_email_notification: params['user_email_notification'] = user_email_notification
         if help: params['help'] = _help
-        
+
         response = urllib2.urlopen(self.__request__(params))
         return json.loads(response.read())
 
@@ -601,5 +797,5 @@ if __name__ == '__main__':
     password = raw_input("Enter your password: ")
     host = raw_input("Enter your hostname: ")
     glpi = GLPI()
-    glpi.connect(host,username,password)    
+    glpi.connect(host,username,password)
     pprint.pprint(glpi.get_network_ports(5,"NetworkEquipment"))
