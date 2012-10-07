@@ -6,8 +6,6 @@
 
 """
 
-
-
 import urllib, urllib2
 import json
 import gzip
@@ -50,6 +48,8 @@ class GLPI:
         plugin enabled. U{It's available here
         <http://plugins.glpi-project.org/spip.php?article94>}
 
+        Returns True if connection was successful.
+
         @type host: FQDN string
         @param host: hostname of the GLPI server, has not been tested
         with HTTPS
@@ -69,6 +69,7 @@ class GLPI:
         try:
             session_id = json.loads(response)['session']       
             self.session = session_id
+            return True
         except:
             raise Exception("Login incorrect or server down")
 
@@ -171,7 +172,8 @@ class GLPI:
         response = urllib2.urlopen(self.__request__(params))
         return json.loads(response.read())
 
-    def get_computer(self,computer,id2name=None,infocoms=None,contracts=None,networkports=None,_help=None):
+    def get_computer(self,computer,id2name=None,infocoms=None,contracts=None,
+                     networkports=None,_help=None):
         """
         Returns a JSON serialized computer object from the GLPI server
 
@@ -412,10 +414,41 @@ class GLPI:
         response = urllib2.urlopen(self.__request__(params))
         return json.loads(response.read())
 
-    def list_groups(self):
+    def list_groups(self,mine=None,parent=None,under=None,withparent=None,filter=None,
+                    count=None,_help=None):
         """
         Return a JSON serialized list of groups from the GLPI server.
+
+        @type mine: boolean
+        @type parent: integer
+        @type under: integer
+        @type withparent: boolean
+        @type filter: string
+        @type count: pair of integers
+        @type _help: boolean
+
+        @param mine: only retrieve groups of connected user
+        @param parent: only retrieve groups under selected parent (group ID)
+        @param under: only retrive child groups of selected one (group ID)
+        @param withparent: also search for recursive group in parent's entities
+        @param filter: filter, options include
+          - is_requester
+          - is_assign
+          - is_notify
+          - is_itemgroup
+          - is_usergroup
         """
+        params = {'method':'glpi.listGroups',
+                  'session':self.session}
+        if mine: params['mine'] = mine
+        if parent: params['parent'] = parent
+        if under: params['under'] = under
+        if withparent: params['withparent'] = withparent
+        if filter: params['filter'] = filter
+        if count: params['count'] = count
+        if _help: params['help'] = _help
+        response = urllib2.urlopen(self.__request__(params))
+        return json.loads(response.read())
         pass
 
     def list_helpdesk_items(self):
