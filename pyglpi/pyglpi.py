@@ -34,13 +34,19 @@ class GLPI:
     B{Special Note} If any boolean arguments are defined, they're
     automatically added to the GET request, which means the
     webservices API will treat them as being true. You've been warned.
+
+    @type BASEURL: string
+    @ivar BASEURL: URL part that comes after the hostname, '/glpi' is
+    the default
     """
+
+    BASEURL = "/glpi"
 
     def __init__(self):
         pass
 
     def __request__(self,params):
-        return self.url + urllib.urlencode(params)
+        return self.url + self.BASEURL + urllib.urlencode(params)
 
     def connect(self,host,login_name,login_password):
         """
@@ -51,15 +57,14 @@ class GLPI:
         Returns True if connection was successful.
 
         @type host: FQDN string
-        @param host: hostname of the GLPI server, has not been tested
-        with HTTPS
         @type login_name: string
-        @param login_name: your GLPI username
         @type login_password: string
+        @param host: hostname of the GLPI server, has not been tested with HTTPS
+        @param login_name: your GLPI username
         @param login_password: pretty obvious
         """
-        self.url = 'http://'+host+'/plugins/webservices/rest.php?'
         
+        self.url = 'http://' + host +'/' + self.BASEURL + '/plugins/webservices/rest.php?'        
         
         self.login_name = login_name
         self.login_password = login_password
@@ -1129,8 +1134,12 @@ class GLPI:
         return json.loads(response.read())        
 
 if __name__ == '__main__':
+    
     username = raw_input("Enter your GLPI username: ")
     password = raw_input("Enter your password: ")
     host = raw_input("Enter your hostname: ")
     glpi = GLPI()
+    # my servers are configured with the glpi root under VirtualHost
+    # configurations, BASEURL changed accordingly on next line.
+    GLPI.BASEURL = ''
     glpi.connect(host,username,password)
