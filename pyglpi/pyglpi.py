@@ -11,6 +11,7 @@ import json
 import gzip
 import pprint
 import sys
+import getpass
 
 class GLPI:
     """
@@ -744,11 +745,11 @@ class GLPI:
         @param count: interable including start and limit integers
         @param _help: get usage information
         """
-        params = {'method':'glpi.listUsers',
+        params = {'method':'glpi.listTickets',
                   'session':self.session}
         if mine: params['mine'] = mine
-        if user: params['user'] = user
-        if recipent: params['recipient'] = recipient
+        if user: params['user'] = user        
+        if recipient: params['recipient'] = recipient
         if group: params['group'] = group
         if mygroups: params['mygroups'] = mygroups
         if category: params['category'] = category
@@ -1136,10 +1137,13 @@ class GLPI:
 if __name__ == '__main__':
     
     username = raw_input("Enter your GLPI username: ")
-    password = raw_input("Enter your password: ")
+    password = getpass.getpass("Enter your password: ")
     host = raw_input("Enter your hostname: ")
     glpi = GLPI()
+
     # my servers are configured with the glpi root under VirtualHost
     # configurations, BASEURL changed accordingly on next line.
     GLPI.BASEURL = ''
-    glpi.connect(host,username,password)
+    print glpi.connect(host,username,password)
+    pprint.pprint(glpi.list_tickets())
+    
