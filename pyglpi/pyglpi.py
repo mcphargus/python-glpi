@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-@author: Clint Grimsley
+@author: Clint Grimsley <clint.grimsley@gmail.com>
 @license: GPLv2 U{http://www.gnu.org/licenses/gpl-2.0.html}
 
 """
