@@ -10,7 +10,7 @@ import urllib, urllib2
 import json
 import gzip
 import pprint
-import sys
+import sys, os, warnings
 import getpass
 
 class GLPI:
@@ -347,16 +347,16 @@ class GLPI:
         server.
 
         @type network_equipment_id: integer
-        @param network_equipment_id: ID of the network equipment
         @type id2name: boolean
-        @param id2name: associate labels with IDs and return with the rest of the JSON result
         @type infocoms: boolean
-        @param infocoms: return infocoms associated with the network equipment
         @type contracts: boolean
-        @param contracts: return contracts associated with the network equipment
         @type networkports: boolean
-        @param networkports: return information about the equipments network ports
         @type _help: boolean
+        @param network_equipment_id: ID of the network equipment
+        @param id2name: associate labels with IDs and return with the rest of the JSON result
+        @param infocoms: return infocoms associated with the network equipment
+        @param contracts: return contracts associated with the network equipment
+        @param networkports: return information about the equipments network ports
         @param _help: return JSON serialized information about this API call
         """
         params = {'method':'glpi.getNetworkEquipment',
@@ -378,15 +378,12 @@ class GLPI:
         information from the GLPI server.
 
         @type _id: integer
-        @param _id: object id
-
         @type itemtype: integer
-        @param itemtype: the object type
-
         @type id2name: boolean
-        @param id2name: option to enable id to name translation of dropdown fields
-
         @type _help: boolean
+        @param _id: object id
+        @param itemtype: the object type
+        @param id2name: option to enable id to name translation of dropdown fields
         @param _help: Get help from the server
         """
         params = {'method':'glpi.getInfoComs',
@@ -403,10 +400,10 @@ class GLPI:
         Return a JSON serialized list of contracts from the GLPI server.
 
         @type _id: integer
-        @param _id: computer id
-        @type id2name: boolean
-        @param id2name: option to enable id to name translation of dropdown fields
+        @type id2name: boolean        
         @type _help: boolean
+        @param _id: computer id
+        @param id2name: option to enable id to name translation of dropdown fields
         @param _help: get help from server
         """
         params = {'method':'glpi.getContracts',
@@ -424,17 +421,17 @@ class GLPI:
         server.
 
         @type _id: integer
-        @param _id: object ID
         @type itemtype: string
+        @type id2name: boolean
+        @type _help: boolean
+        @param _id: object ID
         @param itemtype: values can be:
           - Computer
           - Peripheral
           - NetworkEquipment
           - Phone
           - Printer
-        @type id2name: boolean
         @param id2name: option to enable id to name translation of dropdown fields
-        @type _help: boolean
         @param _help: get help from server about this api call
         """
 
@@ -457,7 +454,7 @@ class GLPI:
 
         @type count: list
         @type _help: boolean
-        @param count: interable containing start and limit integers
+        @param count: iterable containing start and limit integers
         @param _help: get help from server about this API call
         """
         params = {'method':'glpi.listComputers',
@@ -678,7 +675,6 @@ class GLPI:
         """
         Return a JSON serialized list of tickets from the GLPI server.
 
-
         @type mine: boolean
         @type user: integer
         @type recipient: integer
@@ -742,7 +738,7 @@ class GLPI:
           - entities_id
           - priority
         @param id2name: option to enable id to name translation of dropdown menus
-        @param count: interable including start and limit integers
+        @param count: iterable including start and limit integers
         @param _help: get usage information
         """
         params = {'method':'glpi.listTickets',
@@ -803,7 +799,7 @@ class GLPI:
           - name
           - login
         defaults to 'id'
-        @param count: interable including start and limit integers
+        @param count: iterable including start and limit integers
         @param _help: get usage information
         """
 
@@ -1135,12 +1131,16 @@ class GLPI:
         return json.loads(response.read())        
 
 if __name__ == '__main__':
-    
-    username = raw_input("Enter your GLPI username: ")
-    password = getpass.getpass("Enter your password: ")
-    host = raw_input("Enter your hostname: ")
-    glpi = GLPI()
+    try:
+        host = os.environ['GLPI_SERVERNAME']
+        username = os.environ['GLPI_USERNAME']
+    except:
+        warnings.warn("GLPI environment variables not locally set", RuntimeWarning)
+        host = raw_input("Enter your GLPI hostname: ")
+        username = raw_input("Enter your GLPI username: ")       
 
+    password = getpass.getpass("Enter your password: ")
+    glpi = GLPI()
     # my servers are configured with the glpi root under VirtualHost
     # configurations, BASEURL changed accordingly on next line.
     GLPI.BASEURL = ''
