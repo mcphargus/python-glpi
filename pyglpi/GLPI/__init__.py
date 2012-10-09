@@ -265,7 +265,7 @@ class GLPIClient:
         @param _id: ID of the item being requested
         @param show_label: show label
         @param show_name: show name
-        @param _help: list available options in JSON
+        @param _help: get usage information
         """
         params = {'method':'glpi.getObject',
                   'session':self.session}
@@ -278,33 +278,41 @@ class GLPIClient:
         response = urllib2.urlopen(self.__request__(params))
         return json.loads(response.read())
 
-    def get_computer(self,computer,id2name=None,infocoms=None,contracts=None,
-                     networkports=None,_help=None):
+    def get_computer(self,computer_id,**kwargs):
         """
         Returns a JSON serialized computer object from the GLPI server
 
-        @type computer: integer
+        @type computer_id: integer
         @type id2name: boolean
         @type infocoms: boolean
         @type contracts: boolean
         @type networkports: boolean
         @type _help: boolean
-        @param computer: computerID
+        @param computer_id: computerID
         @param id2name: option to enable id to name translation of dropdown fields
         @param infocoms: return infocoms associated with the computer
         @param contracts: return contracts associated with the network equipment
         @param networkports: return information about computer's network ports
-        @param _help: returns a serialized object representing help about how to use this method
+        @param _help: get usage information
         """
-
         params = {'method':'glpi.getComputer',
                   'session': self.session,
-                  'computer':computer}
-        if id2name: params['id2name'] = id2name
-        if infocoms: params['infocoms'] = infocoms
-        if contracts: params['contracts'] = contracts
-        if networkports: params['networkports'] = networkports
-        if _help: params['help'] = _help
+                  'computer':computer_id}
+
+        ###################### Tue Oct  9 17:22:34 EDT 2012 ##############
+        # I realized today that I don't like to type very much, using
+        # kwargs is cleaner, if anyone has a major issue with that,
+        # speak now or forever hold your peace. -CDG
+        ################ old stuff here ##################################
+        # print self.__request__(params)
+        # if id2name: params['id2name'] = id2name
+        # if infocoms: params['infocoms'] = infocoms
+        # if contracts: params['contracts'] = contracts
+        # if networkports: params['networkports'] = networkports
+        # if _help: params['help'] = _help
+
+        for arg in kwargs:
+            params[arg]  = kwargs[arg]            
 
         response = urllib2.urlopen(self.__request__(params))
         return json.loads(response.read())
@@ -656,7 +664,6 @@ class GLPIClient:
                      locations_id=None, name=None, otherserial=None,
                      room=None, building=None, serial=None,
                      show_label=None, count=None, _help=None):
-
         """
         Return as JSON serialized list of objects from the GLPI server.
 

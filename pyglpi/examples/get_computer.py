@@ -31,11 +31,20 @@ if __name__ == '__main__':
     # my servers are configured with the glpi root under VirtualHost
     # configurations, BASEURL changed accordingly on next line.
     glpi.BASEURL = ''
-    print "connecting"
-    connected = glpi.connect(host,username,password)
-    if connected == True:
-        print "connected"
-    else:
-        raise Exception("Could not connect to GLPI server")
+    glpi.connect(host,username,password)
+    
+    print "\nGetting Computer\n"
+    pprint.pprint(glpi.get_computer(29))
 
-    pprint.pprint(glpi.list_objects(itemtype='Computer'))
+    print "\nGetting Help\n"
+    pprint.pprint(glpi.get_computer(29,help=True))
+
+    print "\nGetting Computer With All Options\n"
+    pprint.pprint(glpi.get_computer(29, id2name=True,
+                                    networkports=True, contracts=True ))
+
+    print "\nGetting with infocoms doesn't work for some reason, skipping\n"
+
+    # pprint.pprint(glpi.get_computer(29, id2name=True,
+    #                                 networkports=True, contracts=True,
+    #                                 infocoms=True))

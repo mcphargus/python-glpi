@@ -29,7 +29,5 @@ if __name__ == '__main__':
     # configurations, BASEURL changed accordingly on next line.
     glpi.BASEURL = ''
     glpi.connect(host)
-    # all we want is a list of tickets, making sure this part of the
-    # API works, eventually I'll write unit tests, but I'm a lazy
-    # piece of crap, so I'm eyeballing it for now
+
     pprint.pprint(glpi.test())
