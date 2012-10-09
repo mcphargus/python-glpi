@@ -139,9 +139,9 @@ class GLPIClient:
         params = {'method':'glpi.listAllMethods'}
         if self.session: params['session'] = self.session
         if count:
-            if count.length < 2:
+            if len(count) < 2:
                 raise Exception("List needs to include a start and limit integer")
-            if count.length == 2:
+            if len(count) == 2:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
@@ -174,9 +174,9 @@ class GLPIClient:
         if category: params['category'] = category
         if contains: params['contains'] = contains
         if count:
-            if count.length < 2:
+            if len(count) < 2:
                 raise Exception("List needs to include a start and limit integer")
-            if count.length == 2:
+            if len(count) == 2:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
@@ -464,9 +464,9 @@ class GLPIClient:
         params = {'method':'glpi.listComputers',
                   'session':self.session}
         if count:
-            if count.length < 2:
+            if len(count) < 2:
                 raise Exception("List needs to include a start and limit integer")
-            if count.length == 2:
+            if len(count) == 2:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
@@ -512,9 +512,9 @@ class GLPIClient:
         if helpdesk: params['helpdesk'] = helpdesk
         if criteria: params['criteria'] = criteria
         if count:
-            if count.length < 2:
+            if len(count) < 2:
                 raise Exception("List needs to include a start and limit integer")
-            if count.length == 2:
+            if len(count) == 2:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
@@ -555,9 +555,9 @@ class GLPIClient:
         if withparent: params['withparent'] = withparent
         if filter: params['filter'] = filter
         if count:
-            if count.length < 2:
+            if len(count) < 2:
                 raise Exception("List needs to include a start and limit integer")
-            if count.length == 2:
+            if len(count) == 2:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
@@ -587,9 +587,9 @@ class GLPIClient:
 
         if id2name: params['id2name'] = id2name
         if count:
-            if count.length < 2:
+            if len(count) < 2:
                 raise Exception("List needs to include a start and limit integer")
-            if count.length == 2:
+            if len(count) == 2:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
@@ -611,9 +611,9 @@ class GLPIClient:
         params = {'method':'glpi.listHelpdeskTypes',
                   'session':self.session}
         if count:
-            if count.length < 2:
+            if len(count) < 2:
                 raise Exception("List needs to include a start and limit integer")
-            if count.length == 2:
+            if len(count) == 2:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
@@ -636,9 +636,9 @@ class GLPIClient:
         params = {'method':'glpi.listInventoryObjects',
                   'session':self.session}
         if count:
-            if count.length < 2:
+            if len(count) < 2:
                 raise Exception("List needs to include a start and limit integer")
-            if count.length == 2:
+            if len(count) == 2:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
@@ -659,9 +659,9 @@ class GLPIClient:
         params = {'method':'glpi.listObjects',
                   'session':self.session}
         if count:
-            if count.length < 2:
+            if len(count) < 2:
                 raise Exception("List needs to include a start and limit integer")
-            if count.length == 2:
+            if len(count) == 2:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
@@ -764,9 +764,9 @@ class GLPIClient:
         if order: params['order'] = order
         if id2name: params['id2name'] = id2name
         if count:
-            if count.length < 2:
+            if len(count) < 2:
                 raise Exception("List needs to include a start and limit integer")
-            if count.length == 2:
+            if len(count) == 2:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
@@ -817,9 +817,9 @@ class GLPIClient:
         if parent: params['parent'] = parent
         if order: params['order'] = order
         if count:
-            if count.length < 2:
+            if len(count) < 2:
                 raise Exception("List needs to include a start and limit integer")
-            if count.length == 2:
+            if len(count) == 2:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help

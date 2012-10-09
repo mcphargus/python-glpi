@@ -1,0 +1,42 @@
+#+TITLE: PyGLPI Status
+#+AUTHOR: Clint Grimsley (clint.grimsley@gmail.com)
+#+DATE: <2012-10-09 Tue 11:12>
+
+#+BEGIN_QUOTE
+
+If you will it, it is no dream, Dude. --Walter Sobchak
+
+#+END_QUOTE
+
+This sort of thing really inspires me to create an elisp emacs plugin
+for importing issues from github. Some googling turns up somebody has
+[[http://lists.gnu.org/archive/html/emacs-orgmode/2011-05/msg00788.html][started on this]].
+
+* MILESTONES
+
+** TODO [[https://github.com/mcphargus/python-glpi/issues?milestone=2&state=open][SOAP and XML Webservices]]
+   DEADLINE: <2012-11-24 17:00>
+
+   I fully plan to support all of the capabilities of the webservices
+   plugin. Proper XML-RPC implementation will allow for easier
+   implementation of protocols like Jabber.
+
+** TODO [[https://github.com/mcphargus/python-glpi/issues?milestone=1&state=open][Object Orientation]]
+   DEADLINE: <2012-10-26 17:00>
+
+   Right now (2012-10-08) this API is really just a wrapper around
+   urllib2. My plan is to create python objects for every GLPI object,
+   and then allow methods for interesting imports and exports, such as
+   to and from LDAP.
+
+   Creating python objects for everything, that will at first just be
+   =__str__()= to JSON objects is a near term goal.
+
+** TODO [[https://github.com/mcphargus/python-glpi/issues?milestone=3&state=open][Official Release]]
+   DEADLINE: <2012-11-30 17:00>
+
+   An official release will need to be properly packaged in a python
+   egg file or an =easy_install= package. I'd optimistically like to
+   have this done in two months or so, but I'm pretty sure that's not
+   going to happen.
+
