@@ -573,7 +573,7 @@ class GLPIClient:
         @type id2name: boolean
         @type count: list
         @type _help: boolean
-        @param itemtype: List B{allowed} items for the authenticated
+        @param itemtype: list B{allowed} items for the authenticated
         user to open a helpdesk ticket on, can be:
           - my: returns all my devices
           - empty: returns general helpdesk items
@@ -645,19 +645,57 @@ class GLPIClient:
         response = urllib2.urlopen(self.__request__(params))
         return json.loads(response.read())
 
-    def list_objects(self,count=None,_help=None):
+    def list_objects(self, itemtype, location_name=None,
+                     locations_id=None, name=None, otherserial=None,
+                     room=None, building=None, serial=None,
+                     show_label=None, count=None, _help=None):
+
         """
         Return as JSON serialized list of objects from the GLPI server.
 
         User must be a super admin to use this method.
 
+        @type itemtype: string
+        @type location_name: string
+        @type locations_id: integer
+        @type name: string
+        @type otherserial: string
+        @type room: string
+        @type building: string
+        @type serial: string
+        @type show_label: boolean
         @type count: list
-        @type _help: boolean
+        @type _help: boolean        
+        @param itemtype: B{required} itemtypes are plentiful and
+        available here:        
+        U{https://forge.indepnet.net/embedded/glpi/hierarchy.html}
+        
+        B{Note} This is a listing of all GLPI classes, some are not
+        retrievable through this method
+        
+        @param location_name: 
+        @param locations_id: 
+        @param name: 
+        @param otherserial: 
+        @param room: 
+        @param building: 
+        @param serial: 
+        @param show_label: 
         @param count: list including start and limit
         @param _help: get usage information
         """
         params = {'method':'glpi.listObjects',
-                  'session':self.session}
+                  'session':self.session,
+                  'itemtype':itemtype}
+        if location_name: params['location_name'] = location_name
+        if locations_id: params['location_id'] = locations_id
+        if name: params['name'] = name
+        if otherserial: params['otherserial'] = otherserial
+        if room: params['room'] = room
+        if building: params['building'] = building
+        if serial: params['serial'] = serial
+        if show_label: params['show_label'] = show_label
+        
         if count:
             if len(count) < 2:
                 raise Exception("List needs to include a start and limit integer")
@@ -776,7 +814,6 @@ class GLPIClient:
     def list_users(self, user=None, group=None, location=None,
                    login=None, name=None, entity=None, parent=None,
                    order=None, count=None, _help=None):
-
         """
         Return a JSON serialized list of users from the GLPI server.
 
@@ -835,7 +872,6 @@ class GLPIClient:
                       victim=None,observer=None,date=None,itemtype=None,item=None,
                       urgency=None,_type=None,source=None,category=None,user_email=None,
                       user_email_notification=None,_help=None):
-
         """
         Returns a JSON serialized version of a ticket upon
         success. Unless otherwise noted, all params are optional
@@ -905,7 +941,6 @@ class GLPIClient:
     def add_ticket_document(self, ticket, url=None, name=None,
                             base64=None, comment=None, content=None,
                             _help=None):
-
         """
         Add a document to an existing ticket if the authenticated user can edit it.
 
@@ -1134,11 +1169,10 @@ class GLPIClient:
 
 class GLPIObject:
     """ Base class for all GLPI objects """
-    _id = None
+    object_id = None
     entities_id = None
-    __url = None
+    object_url = None
     name = None
-
 
     def __init__(self):
         """
@@ -1396,6 +1430,5 @@ if __name__ == '__main__':
     # my servers are configured with the glpi root under VirtualHost
     # configurations, BASEURL changed accordingly on next line.
     GLPI.BASEURL = ''
-    print glpi.connect(host,username,password)
-    pprint.pprint(glpi.list_tickets())
+    glpi.connect(host,username,password)
 
