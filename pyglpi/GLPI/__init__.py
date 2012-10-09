@@ -52,7 +52,7 @@ class GLPIClient:
     def __request__(self,params):
         return self.url + self.BASEURL + urllib.urlencode(params)
 
-    def connect(self,host,login_name,login_password):
+    def connect(self,host,login_name=None,login_password=None):
         """
         Connect to a running GLPI instance that has the webservices
         plugin enabled. U{It's available here
@@ -70,19 +70,26 @@ class GLPIClient:
 
         self.url = 'http://' + host +'/' + self.BASEURL + '/plugins/webservices/rest.php?'
 
-        self.login_name = login_name
-        self.login_password = login_password
-        params = {'login_name':login_name,
-                  'login_password':login_password,
-                  'method':'glpi.doLogin'}
-        request = urllib2.Request(self.url + urllib.urlencode(params))
-        response = urllib2.urlopen(request).read()
-        try:
-            session_id = json.loads(response)['session']
-            self.session = session_id
-            return True
-        except:
-            raise Exception("Login incorrect or server down")
+        self.login_name = None
+        self.login_password = None
+        if login_name: self.login_name = login_name
+        if login_password: self.login_password = login_password
+
+        if self.login_name != None and self.login_password != None:
+            params = {'login_name':login_name,
+                      'login_password':login_password,
+                      'method':'glpi.doLogin'}
+            request = urllib2.Request(self.url + urllib.urlencode(params))
+            response = urllib2.urlopen(request).read()
+            try:
+                session_id = json.loads(response)['session']
+                self.session = session_id
+                return True
+            except:
+                raise Exception("Login incorrect or server down")
+        else:
+            warnings.warn("Connected anonymously, will only be able to use non-authenticated methods")
+            return self
 
     """
     Un-authenticated methods
