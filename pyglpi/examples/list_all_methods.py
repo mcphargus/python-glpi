@@ -24,7 +24,7 @@ if __name__ == '__main__':
         warnings.warn("GLPI environment variables not locally set", RuntimeWarning)
         host = raw_input("Enter your GLPI hostname: ")
     
-    glpi = GLPIClient()
+    glpi = GLPIClient.RESTClient()
     # my servers are configured with the glpi root under VirtualHost
     # configurations, BASEURL changed accordingly on next line.
     glpi.BASEURL = ''

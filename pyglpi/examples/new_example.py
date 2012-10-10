@@ -6,7 +6,7 @@ from GLPI.GLPIObject import User
 from GLPI.GLPIObject import InventoryItem
 from GLPI.GLPIObject import Computer
 from GLPI.GLPIObject import Document
-from GLPI import GLPIClient
+from GLPI import GLPIClient.GLPIClient
 
 inv_item = InventoryItem()
 ticket = Ticket()
