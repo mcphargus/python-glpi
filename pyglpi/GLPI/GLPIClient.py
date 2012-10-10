@@ -1,4 +1,5 @@
-import GLPIObject
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
 
 import urllib, urllib2
 import json
