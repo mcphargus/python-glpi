@@ -1,0 +1,28 @@
+Python API for calling GLPI Webservices
+=======================================
+
+* What it is
+
+  This project started a small script to enable nagios to generate
+  tickets in GLPI upon alerts. Then I decided I needed a fuller
+  pythonic api to my GLPI server.
+
+* Where it is
+
+  I'm breaking a semantic rule by including status updates in this
+  README, but who cares? I'm saving you fine folks a click.
+
+** Status Update <2012-10-17 Wed 13:20>   
+   
+   I've wrtten examples to test some of these methods. 
+
+** Status Update <2012-10-08 Mon >
+   Please note: as of 2012-10-08, most of these methods are untested,
+   and this is completely a work in progress. I will update this
+   README file or the github wiki for this project as I complete
+   tests.
+
+* Want to help?
+
+  Anyone willing, feel free to test these APIs along with me and email
+  me their results and suggestions (address is in pyglpy.py).
