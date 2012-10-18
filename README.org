@@ -1,5 +1,4 @@
-Python API for calling GLPI Webservices
-=======================================
+#+TITLE: Python API for Calling GLPI Webservices
 
 * What it is
 
