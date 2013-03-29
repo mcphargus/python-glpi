@@ -7,6 +7,7 @@ import pprint
 import sys, os, warnings
 import getpass
 
+
 class RESTClient:
     """.. note:: If any boolean arguments are defined, they're \
     automatically added to the GET request, which means the \
@@ -34,10 +35,10 @@ class RESTClient:
         :type login_password: string
         :param host: hostname of the GLPI server, has not been tested with HTTPS
         :param login_name: your GLPI username
-        :param login_password: pretty obvious
+        :param login_password: your GLPI password
         """
 
-        self.url = 'http://' + host +'/' + self.BASEURL + '/plugins/webservices/rest.php?'
+        self.url = 'http://' + host + self.BASEURL + '/plugins/webservices/rest.php?'
 
         self.login_name = None
         self.login_password = None

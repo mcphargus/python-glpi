@@ -40,7 +40,6 @@ for importing issues from github. Some googling turns up somebody has
    have this done in two months or so, but I'm pretty sure that's not
    going to happen.
 
-
 * DAYS
 
 ** <2012-10-10 Wed 18:32>
