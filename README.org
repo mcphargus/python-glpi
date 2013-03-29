@@ -6,11 +6,6 @@
   tickets in GLPI upon alerts. Then I decided I needed a fuller
   pythonic api to my GLPI server.
 
-* Where it is
-
-  I'm breaking a semantic rule by including status updates in this
-  README, but who cares? I'm saving you fine folks a click.
-
 ** Status Update <2012-10-17 Wed 13:20>   
    
    I've wrtten examples to test some of these methods. 
