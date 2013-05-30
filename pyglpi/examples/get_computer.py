@@ -17,7 +17,7 @@ if __name__ == '__main__':
     import warnings
     import getpass
     import pprint
-    
+
     try:
         host = os.environ['GLPI_SERVERNAME']
         username = os.environ['GLPI_USERNAME']
@@ -31,8 +31,9 @@ if __name__ == '__main__':
     # my servers are configured with the glpi root under VirtualHost
     # configurations, BASEURL changed accordingly on next line.
     glpi.BASEURL = ''
+    glpi.SCHEME = 'https://'
     glpi.connect(host,username,password)
-    
+
     print "\nGetting Computer\n"
     pprint.pprint(glpi.get_computer(29))
 

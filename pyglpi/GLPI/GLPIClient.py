@@ -7,6 +7,7 @@ import pprint
 import sys, os, warnings
 import getpass
 
+__name__ == "GLPIClient"
 
 class RESTClient:
     """.. note:: If any boolean arguments are defined, they're \
@@ -14,8 +15,9 @@ class RESTClient:
     webservices API will treat them as being true. You've been warned. """
 
     BASEURL = "/glpi"
+    SCHEME = "http://"
     """ URL part that comes after the hostname '/glpi' is the default """
-    
+
     def __init__(self):
         pass
 
@@ -24,10 +26,10 @@ class RESTClient:
 
     def connect(self,host,login_name=None,login_password=None):
         """
-        
+
         Connect to a running GLPI instance that has the webservices
         plugin enabled.
-        
+
         Returns True if connection was successful.
 
         :type host: string
@@ -38,7 +40,7 @@ class RESTClient:
         :param login_password: your GLPI password
         """
 
-        self.url = 'http://' + host + self.BASEURL + '/plugins/webservices/rest.php?'
+        self.url = self.SCHEME + host + self.BASEURL + '/plugins/webservices/rest.php?'
 
         self.login_name = None
         self.login_password = None
@@ -226,7 +228,7 @@ class RESTClient:
                      show_name=None,_help=None):
         """
         Returns an object from the GLPI server. itemtype can take `one of the following <https://forge.indepnet.net/embedded/glpi/annotated.html>`_
-        
+
         :type itemtype: integer
         :type _id: integer
         :type show_label: boolean
@@ -237,7 +239,7 @@ class RESTClient:
         :param show_label: show label
         :param show_name: show name
         :param _help: get usage information
-        
+
         """
         params = {'method':'glpi.getObject',
                   'session':self.session}
@@ -284,7 +286,7 @@ class RESTClient:
         # if _help: params['help'] = _help
 
         for arg in kwargs:
-            params[arg]  = kwargs[arg]            
+            params[arg]  = kwargs[arg]
 
         response = urllib2.urlopen(self.__request__(params))
         return json.loads(response.read())
@@ -474,7 +476,7 @@ class RESTClient:
         :type _help: boolean
 
         :param dropdown: name of the dropdown, must be a GLPI class. Special dropdowns are:
-        
+
           - ticketstatus
           - ticketurgency
           - ticketimpact
@@ -482,7 +484,7 @@ class RESTClient:
           - ticketpriority
           - ticketglobalvalidation
           - ticketvalidationstatus
-          
+
         :param _id: id of the entry
         :param name: optional string (mysql % joker allowed)
         :param helpdesk: filter on 'is_helpdeskvisible' attribute (TicketCategory) (deprecated, use criteria=helpdesk intead)
@@ -526,13 +528,13 @@ class RESTClient:
         :param under: only retrive child groups of selected one (group ID)
         :param withparent: also search for recursive group in parent's entities
         :param filter: filter, options include:
-        
+
           - is_requester
           - is_assign
           - is_notify
           - is_itemgroup
           - is_usergroup
-          
+
         :param count: iterable containing start and limit integers
         :param _help: get usage information
         """
@@ -563,10 +565,10 @@ class RESTClient:
         :type count: list
         :type _help: boolean
         :param itemtype: list *allowed* items for the authenticated user to open a helpdesk ticket on, can be:
-        
+
           - my: returns all my devices
           - empty: returns general helpdesk items
-          
+
         :param id2name: option to enable id to name translation of dropdown menus
         :param count: iterable containing start and limit integers
         :param _help: option to get usage information
@@ -654,16 +656,16 @@ class RESTClient:
         :type serial: string
         :type show_label: boolean
         :type count: list
-        :type _help: boolean        
-        :param itemtype: **required** itemtypes are plentiful and `available here <https://forge.indepnet.net/embedded/glpi/hierarchy.html>`_    
-        :param location_name: 
-        :param locations_id: 
-        :param name: 
-        :param otherserial: 
-        :param room: 
-        :param building: 
-        :param serial: 
-        :param show_label: 
+        :type _help: boolean
+        :param itemtype: **required** itemtypes are plentiful and `available here <https://forge.indepnet.net/embedded/glpi/hierarchy.html>`_
+        :param location_name:
+        :param locations_id:
+        :param name:
+        :param otherserial:
+        :param room:
+        :param building:
+        :param serial:
+        :param show_label:
         :param count: list including start and limit
         :param _help: get usage information
 
@@ -680,7 +682,7 @@ class RESTClient:
         if building: params['building'] = building
         if serial: params['serial'] = serial
         if show_label: params['show_label'] = show_label
-        
+
         if count:
             if len(count) < 2:
                 raise Exception("List needs to include a start and limit integer")
@@ -727,7 +729,7 @@ class RESTClient:
         :param mygroups: list of groups of current user
         :param category: ID of the category of the ticket
         :param status: status of the ticket, must be:
-        
+
           - notold
           - old
           - process
@@ -745,7 +747,7 @@ class RESTClient:
         :param item: ID of the item, requires itemtype
         :param entity: ID of the entity of the ticket
         :param satisfaction: only closed tickets with a satisfaction survey:
-        
+
           0. all
           1. waiting
           2. answered
@@ -756,10 +758,10 @@ class RESTClient:
           - waiting
           - accepted
           - pending
-          
+
         :param approver: user ID, only tickets with a validation request sent to this user
         :param order: list of allowed key names:
-        
+
           - id
           - date
           - closedate
@@ -769,7 +771,7 @@ class RESTClient:
           - groups_id
           - entities_id
           - priority
-          
+
         :param id2name: option to enable id to name translation of dropdown menus
         :param count: iterable including start and limit integers
         :param _help: get usage information
@@ -827,7 +829,7 @@ class RESTClient:
         :param entity: ID of entity
         :param parent: search or not for user with recursive right on parent entities (default: True)
         :param order: order of the result, must be one or more of the following,:
-        
+
           - id
           - name
           - login
@@ -938,10 +940,10 @@ class RESTClient:
                             _help=None):
         """
         Add a document to an existing ticket if the authenticated user can edit it.
-        
+
         .. note:: base64 and url are mutually exclusive.
 
-        Returns the ticket if the call succeeds.	
+        Returns the ticket if the call succeeds.
 
         :type ticket: integer
         :type url: string
