@@ -22,7 +22,7 @@ class RESTClient:
         pass
 
     def __request__(self,params):
-        return self.url + self.BASEURL + urllib.urlencode(params)
+        return self.url + urllib.urlencode(params)
 
     def connect(self,host,login_name=None,login_password=None):
         """
