@@ -24,6 +24,41 @@ class RESTClient:
     def __request__(self,params):
         return self.url + urllib.urlencode(params)
 
+    def check_connected(self):
+        """
+
+        Gather informations from the current user to check that the session is
+        still valid.
+
+        Returns True if connection is still good.
+        """
+
+        my_infos = self.get_my_info()
+        if my_infos.get('faultCode', 0) == 13:
+            return False
+        return True
+
+    def load_session(self, host, session):
+        """
+
+        Connect with a previous session token to a running GLPI instance that
+        has the webservices plugin enabled.
+
+        Returns True if connection was successful.
+
+        :type host: string
+        :type session: string
+        :param host: hostname of the GLPI server, has not been tested with HTTPS
+        :param session: the session token
+        """
+
+        self.url = self.SCHEME + host + self.BASEURL + '/plugins/webservices/rest.php?'
+        self.session = session
+        if self.check_connected():
+            return True
+        else:
+            return False
+
     def connect(self,host,login_name=None,login_password=None):
         """
 
