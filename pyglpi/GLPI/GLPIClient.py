@@ -1190,12 +1190,49 @@ class RESTClient:
 
         User must be super admin to run this method.
 
-        TODO: What does this thing return?
+        :type fields: dict
+        :param fields: dict of fields to update
+        Example from updateObjects doc:
+            https://forge.indepnet.net/projects/webservices/wiki/GlpiupdateObjects
 
+            fields = {
+                'Computer': [
+                    {
+                        'id': 30,
+                        'serial': 'J87G-FDZF-970',
+                        'comment': 'Commentaire 1',
+                        'otherserial': '000094'
+                    },
+                    {
+                        'id': 31,
+                        'serial': '544542-029475',
+                        'comment': 'Commentaire 2',
+                        'otherserial': '000096'
+                    },
+                ],
+                'Monitor': [
+                    {
+                        'id': 7,
+                        'serial': '12133432RE2R2'
+                    },
+                    {
+                        'id': 8,
+                        'serial': '4234-43-EFZ-434'
+                    }
+                ]
+                }
+
+        :return: a list of updated fields
         """
-        params = {'method':'glpi.createTicket',
-                  'session':self.session,
-                  'fields':fields}
+        params = {
+                'method':'glpi.updateObjects',
+                'session':self.session,
+        }
+        for glpi_type in fields:
+            for elem in fields[glpi_type]:
+                elem_id = elem['id']
+                for key, value in elem.items():
+                    params['fields[%s][%s][%s]' % (glpi_type, elem_id, key)] = value
         if _help: params['help'] = _help
 
         response = urllib2.urlopen(self.__request__(params))
