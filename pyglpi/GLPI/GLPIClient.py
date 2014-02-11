@@ -1154,11 +1154,31 @@ class RESTClient:
 
         User must be super admin to run this method.
 
-        TODO: what does this thing return?
+        :type fields: dict
+        :param fields: dict of fields to delete
+        Example from deleteObjects doc:
+            https://forge.indepnet.net/projects/webservices/wiki/GlpideleteObjects:
+
+            fields = {
+                'Computer': {
+                    27: 1,
+                    28: 0,
+                },
+                'Monitor': {
+                    5: 1,
+                    6: 1,
+                }
+            }
+
+        :return: a list of deleted fields
         """
-        params = {'method':'glpi.createTicket',
-                  'session':self.session,
-                  'fields':fields}
+        params = {
+                'method':'glpi.deleteObjects',
+                'session':self.session,
+        }
+        for type in fields:
+            for id in fields[type]:
+                params['fields[%s][%s]' % (type, id)] = fields[type][id]
         if _help: params['help'] = _help
 
         response = urllib2.urlopen(self.__request__(params))
