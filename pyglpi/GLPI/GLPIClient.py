@@ -22,7 +22,7 @@ class RESTClient:
         pass
 
     def __request__(self,params):
-        return self.url + urllib.urlencode(params)
+        return self.url + urllib.urlencode(params) #todo-requests
 
     def check_connected(self):
         """
@@ -86,8 +86,8 @@ class RESTClient:
             params = {'login_name':login_name,
                       'login_password':login_password,
                       'method':'glpi.doLogin'}
-            request = urllib2.Request(self.url + urllib.urlencode(params))
-            response = urllib2.urlopen(request).read()
+            request = urllib2.Request(self.url + urllib.urlencode(params)) #todo-requests
+            response = urllib2.urlopen(request).read() #todo-requests
             try:
                 session_id = json.loads(response)['session']
                 self.session = session_id
@@ -112,8 +112,8 @@ class RESTClient:
         """
         params = {'method':'glpi.status'}
         if _help: params['help'] = _help
-        request = urllib2.Request(self.url + urllib.urlencode(params))
-        response = urllib2.urlopen(request).read()
+        request = urllib2.Request(self.url + urllib.urlencode(params)) #todo-requests
+        response = urllib2.urlopen(request).read() #todo-requests
         return json.loads(response)
 
     def test(self,_help=None):
@@ -127,8 +127,8 @@ class RESTClient:
         """
         params = {'method':'glpi.test'}
         if _help: params['help'] = _help
-        request = urllib2.Request(self.url + urllib.urlencode(params))
-        response = urllib2.urlopen(request).read()
+        request = urllib2.Request(self.url + urllib.urlencode(params)) #todo-requests
+        response = urllib2.urlopen(request).read() #todo-requests
         return json.loads(response)
 
     def list_all_methods(self,_help=None):
@@ -140,8 +140,8 @@ class RESTClient:
         """
         params = {'method':'glpi.listAllMethods'}
         if _help: params['help'] = _help
-        request = urllib2.Request(self.url + urllib.urlencode(params))
-        response = urllib2.urlopen(request).read()
+        request = urllib2.Request(self.url + urllib.urlencode(params))  #todo-requests
+        response = urllib2.urlopen(request).read()  #todo-requests
         return json.loads(response)
 
     def list_entities(self,count=None,_help=None):
@@ -162,8 +162,8 @@ class RESTClient:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
-        request = urllib2.Request(self.url + urllib.urlencode(params))
-        response = urllib2.urlopen(request).read()
+        request = urllib2.Request(self.url + urllib.urlencode(params))  #todo-requests
+        response = urllib2.urlopen(request).read()  #todo-requests
         return json.loads(response)
 
     def list_know_base_items(self, faq=None, category=None,
@@ -197,8 +197,8 @@ class RESTClient:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
-        request = urllib2.Request(self.url + urllib.urlencode(params))
-        response = urllib2.urlopen(request).read()
+        request = urllib2.Request(self.url + urllib.urlencode(params))  #todo-requests
+        response = urllib2.urlopen(request).read()  #todo-requests
         return json.loads(response)
 
     """
@@ -212,7 +212,7 @@ class RESTClient:
         """
         params = {'method':'glpi.getMyInfo',
                   'session':self.session}
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def list_my_profiles(self):
@@ -222,7 +222,7 @@ class RESTClient:
         """
         params = {'method':'glpi.listMyProfiles',
                   'session':self.session}
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def list_my_entities(self):
@@ -232,7 +232,7 @@ class RESTClient:
         """
         params = {'method':'glpi.listMyEntities',
                   'session':self.session}
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     """
@@ -256,7 +256,7 @@ class RESTClient:
         if id2name: params['id2name'] = str(id2name)
         if _help: params['help'] = help
 
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def get_object(self,itemtype,_id,show_label=None,
@@ -284,7 +284,7 @@ class RESTClient:
         if show_label: params['show_label'] = show_label
         if show_name: params['show_name'] = show_name
         if _help: params['help'] = _help
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def get_computer(self,computer_id,**kwargs):
@@ -323,7 +323,7 @@ class RESTClient:
         for arg in kwargs:
             params[arg]  = kwargs[arg]
 
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def get_computer_infocoms(self,computer_id,id2name=None,_help=None):
@@ -344,7 +344,7 @@ class RESTClient:
         if id2name: params['id2name'] = id2name
         if _help: params['help'] = _help
 
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def get_computer_contracts(self,computer_id,id2name=None,_help=None):
@@ -365,7 +365,7 @@ class RESTClient:
         if id2name: params['id2name'] = id2name
         if _help: params['help'] = _help
 
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def get_network_equipment(self,network_equipment_id,id2name=None,infocoms=None,
@@ -397,7 +397,7 @@ class RESTClient:
         if networkports: params['networkports'] = networkports
         if _help: params['help'] = _help
 
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def get_infocoms(self,_id,itemtype,id2name=None,_help=None):
@@ -420,7 +420,7 @@ class RESTClient:
                   'itemtype':itemtype}
         if id2name: params['id2name'] = id2name
         if _help: params['help'] = _help
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def get_contracts(self,_id,id2name=None,_help=None):
@@ -440,7 +440,7 @@ class RESTClient:
         if id2name: params['id2name'] = id2name
         if _help: params['help'] = _help
 
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def get_network_ports(self,_id,itemtype,id2name=None,_help=None):
@@ -471,7 +471,7 @@ class RESTClient:
         if id2name: params['id2name'] = id2name
         if _help: params['help'] = _help
 
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
 
@@ -494,7 +494,7 @@ class RESTClient:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def list_dropdown_values(self,dropdown,_id=None,parent=None,name=None,
@@ -542,7 +542,7 @@ class RESTClient:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def list_groups(self,mine=None,parent=None,under=None,withparent=None,filter=None,
@@ -587,7 +587,7 @@ class RESTClient:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def list_helpdesk_items(self,itemtype,id2name=None,count=None,_help=None):
@@ -621,7 +621,7 @@ class RESTClient:
                 params['limit'] = count[1]
         if _help: params['help'] = _help
 
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def list_helpdesk_types(self,count=None,_help=None):
@@ -645,7 +645,7 @@ class RESTClient:
                 params['limit'] = count[1]
         if _help: params['help'] = _help
 
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def list_inventory_objects(self,count=None,_help=None):
@@ -669,7 +669,7 @@ class RESTClient:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def list_objects(self, itemtype, location_name=None,
@@ -725,7 +725,7 @@ class RESTClient:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def list_tickets(self,mine=None,user=None, recipient=None,
@@ -837,7 +837,7 @@ class RESTClient:
                 params['start'] = count[0]
                 params['limit'] = count[1]
         if _help: params['help'] = _help
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def list_users(self, user=None, group=None, location=None,
@@ -893,7 +893,7 @@ class RESTClient:
                 params['limit'] = count[1]
         if _help: params['help'] = _help
 
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     """
@@ -967,7 +967,7 @@ class RESTClient:
         if user_email_notification: params['user_email_notification'] = user_email_notification
         if help: params['help'] = _help
 
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def add_ticket_document(self, ticket, url=None, name=None,
@@ -1006,7 +1006,7 @@ class RESTClient:
         if comment: params['comment'] = comment
         if content: params['content'] = content
         if _help: params['help'] = _help
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def add_ticket_followup(self, ticket, content, source=None,
@@ -1044,7 +1044,7 @@ class RESTClient:
         if reopen: params['reopen'] = reopen
         if close: params['close'] = close
         if _help: params['help'] = _help
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def add_ticket_observer(self, ticket, user=None, _help=None):
@@ -1069,7 +1069,7 @@ class RESTClient:
                   'ticket':ticket}
         if user: params['user'] = user
         if _help: params['help'] = _help
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def set_ticket_satisfaction(self, ticket, satisfaction,
@@ -1095,7 +1095,7 @@ class RESTClient:
                   'satisfaction':satisfaction}
         if comment: params['comment'] = comment
         if _help: params['help'] = _help
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def set_ticket_validation(self, approval, status, comment=None,
@@ -1124,7 +1124,7 @@ class RESTClient:
                   'status':status}
         if comment: params['comment'] = comment
         if _help: params['help'] = _help
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def create_objects(self,fields,_help=None):
@@ -1145,7 +1145,7 @@ class RESTClient:
                   'fields':fields}
         if _help: params['help'] = _help
 
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def delete_objects(self,fields,_help=None):
@@ -1181,7 +1181,7 @@ class RESTClient:
                 params['fields[%s][%s]' % (type, id)] = fields[type][id]
         if _help: params['help'] = _help
 
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def update_objects(self,fields,_help=None):
@@ -1235,7 +1235,7 @@ class RESTClient:
                     params['fields[%s][%s][%s]' % (glpi_type, elem_id, key)] = value
         if _help: params['help'] = _help
 
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
 
     def link_objects(self,fields,_help):
@@ -1251,5 +1251,5 @@ class RESTClient:
                   'fields':fields}
         if _help: params['help'] = _help
 
-        response = urllib2.urlopen(self.__request__(params))
+        response = urllib2.urlopen(self.__request__(params))  #todo-requests
         return json.loads(response.read())
