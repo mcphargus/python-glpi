@@ -92,7 +92,8 @@ class RESTClient:
             response = requests.get(self.url, params=params)
 
             try:
-                session_id = json.loads(response)['session']
+                # session_id = response.json()['session']
+                session_id = response.json()['session']
                 self.session = session_id
                 return True
             except:
@@ -116,7 +117,7 @@ class RESTClient:
         params = {'method':'glpi.status'}
         if _help: params['help'] = _help
         response = requests.get(self.url, params=params) #todo-requests
-        return json.loads(response)
+        return response.json()
 
     def test(self,_help=None):
         """
@@ -130,7 +131,7 @@ class RESTClient:
         params = {'method':'glpi.test'}
         if _help: params['help'] = _help
         response = requests.get(self.url, params=params) #todo-requests
-        return json.loads(response)
+        return response.json()
 
     def list_all_methods(self,_help=None):
         """
@@ -142,7 +143,7 @@ class RESTClient:
         params = {'method':'glpi.listAllMethods'}
         if _help: params['help'] = _help
         response = requests.get(self.url, params=params)  #todo-requests
-        return json.loads(response)
+        return response.json()
 
     def list_entities(self,count=None,_help=None):
         """
@@ -163,7 +164,7 @@ class RESTClient:
                 params['limit'] = count[1]
         if _help: params['help'] = _help
         response = requests.get(self.url, params=params)  #todo-requests
-        return json.loads(response)
+        return response.json()
 
     def list_know_base_items(self, faq=None, category=None,
                              contains=None, count=None, _help=None):
@@ -197,7 +198,7 @@ class RESTClient:
                 params['limit'] = count[1]
         if _help: params['help'] = _help
         response = requests.get(self.url, params=params)  #todo-requests
-        return json.loads(response)   #todo-requests
+        return response.json()   #todo-requests
 
     """
     User context methods
