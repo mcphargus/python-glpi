@@ -6,6 +6,10 @@
   tickets in GLPI upon alerts. Then I decided I needed a fuller
   pythonic api to my GLPI server.
 
+** Status Update <2018-07-08 Sun 15:43>   
+   
+   Migrated from urllib to requests to be compatible with Python 2 and Python 3. 
+
 ** Status Update <2012-10-17 Wed 13:20>   
    
    I've wrtten examples to test some of these methods. 

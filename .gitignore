@@ -1,2 +1,5 @@
 *.pyc
 *~
+pyglpi/GLPI.egg-info/
+pyglpi/build/
+pyglpi/dist/
